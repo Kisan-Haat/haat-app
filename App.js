@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import { Provider as PaperProvider  , Text } from 'react-native-paper';
+import { Provider as PaperProvider, Text } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
 import store from './app/store';
 
