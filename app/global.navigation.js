@@ -3,6 +3,15 @@ import HomeScreen from './containers/home.screen';
 import LoginScreen from './containers/login.screen';
 import AuthLoadingScreen from './containers/authLoading.screen';
 
+
+const AuthNavigator  = createStackNavigator({
+    Login: LoginScreen
+},
+{
+    mode: 'modal',
+    headerMode: 'none'
+})
+
 const MenuDrawerNavigator = createDrawerNavigator({
     Home: {
         navigationOptions: {
@@ -21,14 +30,6 @@ const AppNavigator = createStackNavigator({
     mode: 'modal',
     headerMode: 'none'
 });
-
-const AuthNavigator  = createStackNavigator({
-    Login: LoginScreen
-},
-{
-    mode: 'modal',
-    headerMode: 'none'
-})
 
 export default createAppContainer(createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
