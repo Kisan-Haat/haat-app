@@ -2,6 +2,7 @@ import {createAppContainer, createSwitchNavigator, createStackNavigator, createD
 import HomeScreen from './containers/home.screen';
 import LoginScreen from './containers/login.screen';
 import AuthLoadingScreen from './containers/authLoading.screen';
+import UserProfileScreen from './containers/userProfile.screen';
 
 
 const AuthNavigator  = createStackNavigator({
@@ -18,6 +19,12 @@ const MenuDrawerNavigator = createDrawerNavigator({
             drawerLabel: 'Home'
         },
         screen: HomeScreen
+    },
+    UserProfile: {
+        navigationOptions: {
+            drawerLabel: 'User Profile'
+        },
+        screen: UserProfileScreen
     }
 });
 

@@ -3,11 +3,10 @@ import {
     ActivityIndicator,
     AsyncStorage,
     StatusBar,
-    StyleSheet,
     View
 } from "react-native";
 
-export default class AuthLoadingScreen extends Component<{}> {
+export default class AuthLoadingScreen extends Component {
     constructor(props) {
         super(props);
         this._bootstrapAsync();
