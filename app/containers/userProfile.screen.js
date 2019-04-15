@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import HeaderComponent from '../components/header.component';
 import Apihelper from '../utils/api.helper';
 import { ActivityIndicator, withTheme, Card, Avatar, List, Text, Button } from 'react-native-paper';
-import gloabalStyle from '../global.style';
+import globalStyle from '../global.style';
 
 class UserProfileScreen extends Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class UserProfileScreen extends Component {
                             ? <ActivityIndicator color={colors.primary} />
                             : <View>
                                 <Card>
-                                    <Card.Content style={[gloabalStyle.flRow, { justifyContent: 'center' }]}>
+                                    <Card.Content style={[globalStyle.flRow, { justifyContent: 'center' }]}>
                                         <Avatar.Icon size={80} icon="person" />
                                     </Card.Content>
                                     <Card.Content>
@@ -76,7 +76,7 @@ class UserProfileScreen extends Component {
                                         </List.Section>
                                     </Card.Content>
                                 </Card>
-                                <View style={gloabalStyle.padded}>
+                                <View style={globalStyle.padded}>
                                     <Button mode="contained" onPress={this._logout}>Logout</Button>
                                 </View>
                             </View>
