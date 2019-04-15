@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage} from 'react-native';
-import {Button} from 'react-native-paper';
+import { View, Text, AsyncStorage } from 'react-native';
 import globalStyle from '../global.style';
+import HeaderComponent from '../components/header.component';
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
     };
 
-
-    _signOutAsync = async () => {
-        await AsyncStorage.removeItem("authToken");
-        this.props.navigation.navigate('Auth');
-    };
-
     render() {
         return (
             <View style={globalStyle.container}>
+                <HeaderComponent title="React Native SDK" />
                 <Text>Welcome to Home Screen!</Text>
-                <Button onPress={this._signOutAsync}>Logout</Button>
-             </View>
+            </View>
         );
     }
 }

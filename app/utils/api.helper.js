@@ -1,10 +1,10 @@
 import axios from 'axios';
-import {AsyncStorage} from "react-native";
+import { AsyncStorage } from "react-native";
 const baseUrl = 'https://hc-india.hotwax.co';
 
 let axiosObject = axios.create({
-   baseURL: baseUrl,
-   timeout: 10000
+    baseURL: baseUrl,
+    timeout: 10000
 });
 
 axiosObject.interceptors.request.use(async (config) => {
@@ -26,6 +26,12 @@ axiosObject.interceptors.response.use(function (config) {
 const apiHelper = {
     login: (user) => {
         return axiosObject.post('/api/login', user);
+    },
+    logout: () => {
+        return AsyncStorage.clear()
+    },
+    getProfileData: () => {
+        return axiosObject.post('/api/user-profile', {});
     }
 }
 
