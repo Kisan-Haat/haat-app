@@ -3,7 +3,11 @@ package com.reactnativesdk;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+<<<<<<< HEAD
 import com.reactcommunity.rnlocalize.RNLocalizePackage;
+=======
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+>>>>>>> bad2f0e1319a8531f79be0493b37f42c43dce4c9
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -26,7 +30,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+<<<<<<< HEAD
             new RNLocalizePackage(),
+=======
+            new SplashScreenReactPackage(),
+>>>>>>> bad2f0e1319a8531f79be0493b37f42c43dce4c9
             new RNGestureHandlerPackage(),
             new VectorIconsPackage()
       );
