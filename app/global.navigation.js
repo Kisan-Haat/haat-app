@@ -3,6 +3,7 @@ import HomeScreen from './containers/home.screen';
 import LoginScreen from './containers/login.screen';
 import AuthLoadingScreen from './containers/authLoading.screen';
 import UserProfileScreen from './containers/userProfile.screen';
+import I18n from '../app/utils/I18n';
 
 
 const AuthNavigator  = createStackNavigator({
@@ -16,13 +17,13 @@ const AuthNavigator  = createStackNavigator({
 const MenuDrawerNavigator = createDrawerNavigator({
     Home: {
         navigationOptions: {
-            drawerLabel: 'Home'
+            drawerLabel: I18n.t("home")
         },
         screen: HomeScreen
     },
     UserProfile: {
         navigationOptions: {
-            drawerLabel: 'User Profile'
+            drawerLabel: I18n.t("userProfile")
         },
         screen: UserProfileScreen
     }
