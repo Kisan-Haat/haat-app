@@ -4,6 +4,7 @@ import HeaderComponent from '../components/header.component';
 import Apihelper from '../utils/api.helper';
 import { ActivityIndicator, withTheme, Card, Avatar, List, Text, Button } from 'react-native-paper';
 import globalStyle from '../global.style';
+import I18n from '../utils/I18n';
 
 class UserProfileScreen extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class UserProfileScreen extends Component {
                                     </Card.Content>
                                     <Card.Content>
                                         <List.Section>
-                                            <List.Subheader>User Profile</List.Subheader>
+                                            <List.Subheader>{I18n.t("userProfile")}</List.Subheader>
                                             <List.Item
                                                 title={user.partyName}
                                                 left={() => <List.Icon icon="person" />}
@@ -76,8 +77,8 @@ class UserProfileScreen extends Component {
                                         </List.Section>
                                     </Card.Content>
                                 </Card>
-                                <View style={globalStyle.padded}>
-                                    <Button mode="contained" onPress={this._logout}>Logout</Button>
+                                <View style={{ paddingTop: 8 }}>
+                                    <Button mode="contained" onPress={this._logout}>{I18n.t("logout")}</Button>
                                 </View>
                             </View>
                     }
