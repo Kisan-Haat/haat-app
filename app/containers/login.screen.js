@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, AsyncStorage, Alert } from 'react-native';
+import { View, StyleSheet, Image, AsyncStorage, Alert, SafeAreaView } from 'react-native';
 import { Card, TextInput, Button } from 'react-native-paper';
 import globalstyle from '../global.style';
 import ApiHelper from '../utils/api.helper';
@@ -36,30 +36,32 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <View style={globalstyle.padded}>
-                <Card>
-                    <Card.Content>
-                        <TextInput
-                            label={ I18n.t("username") }
-                            style={globalstyle.txtInput}
-                            value={this.state.USERNAME}
-                            onChangeText={(text) => this.setState({ USERNAME: text })}
-                        />
-                        <TextInput
-                            label={ I18n.t("password") }
-                            secureTextEntry={true}
-                            style={globalstyle.txtInput}
-                            value={this.state.PASSWORD}
-                            onChangeText={(text) => this.setState({ PASSWORD: text })}
-                        />
-                        <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{ I18n.t("login") }</Button>
-                        <Image
-                            source={require('../assets/images/hc.png')}
-                            style={styles.Image}
-                        />
-                    </Card.Content>
-                </Card>
-            </View>
+            <SafeAreaView>
+                <View style={globalstyle.padded}>
+                    <Card>
+                        <Card.Content>
+                            <TextInput
+                                label={I18n.t("username")}
+                                style={globalstyle.txtInput}
+                                value={this.state.USERNAME}
+                                onChangeText={(text) => this.setState({ USERNAME: text })}
+                            />
+                            <TextInput
+                                label={I18n.t("password")}
+                                secureTextEntry={true}
+                                style={globalstyle.txtInput}
+                                value={this.state.PASSWORD}
+                                onChangeText={(text) => this.setState({ PASSWORD: text })}
+                            />
+                            <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{I18n.t("login")}</Button>
+                            <Image
+                                source={require('../assets/images/hc.png')}
+                                style={styles.Image}
+                            />
+                        </Card.Content>
+                    </Card>
+                </View>
+            </SafeAreaView>
         );
     }
 }
