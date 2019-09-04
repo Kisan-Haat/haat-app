@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "reactNativeSDK.app"
-               BlueprintName = "reactNativeSDK"
-               ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+               BuildableName = "HaatApp.app"
+               BlueprintName = "HaatApp"
+               ReferencedContainer = "container:HaatApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "reactNativeSDKTests.xctest"
-               BlueprintName = "reactNativeSDKTests"
-               ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+               BuildableName = "HaatAppTests.xctest"
+               BlueprintName = "HaatAppTests"
+               ReferencedContainer = "container:HaatApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "reactNativeSDKTests.xctest"
-               BlueprintName = "reactNativeSDKTests"
-               ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+               BuildableName = "HaatAppTests.xctest"
+               BlueprintName = "HaatAppTests"
+               ReferencedContainer = "container:HaatApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactNativeSDK.app"
-            BlueprintName = "reactNativeSDK"
-            ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+            BuildableName = "HaatApp.app"
+            BlueprintName = "HaatApp"
+            ReferencedContainer = "container:HaatApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactNativeSDK.app"
-            BlueprintName = "reactNativeSDK"
-            ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+            BuildableName = "HaatApp.app"
+            BlueprintName = "HaatApp"
+            ReferencedContainer = "container:HaatApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactNativeSDK.app"
-            BlueprintName = "reactNativeSDK"
-            ReferencedContainer = "container:reactNativeSDK.xcodeproj">
+            BuildableName = "HaatApp.app"
+            BlueprintName = "HaatApp"
+            ReferencedContainer = "container:HaatApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

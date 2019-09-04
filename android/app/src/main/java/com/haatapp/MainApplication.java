@@ -1,4 +1,4 @@
-package com.reactnativesdk;
+package com.haatapp;
 
 import android.app.Application;
 
