@@ -17,13 +17,15 @@ export default class LoginScreen extends Component {
 
     login = () => {
         let user = {
-            USERNAME: this.state.USERNAME,
-            PASSWORD: this.state.PASSWORD
+            username: this.state.USERNAME,
+            password: this.state.PASSWORD
         }
+        alert(JSON.stringify(user));
         ApiHelper.login(user)
             .then(res => {
-                if (res.data.hasOwnProperty('_ERROR_MESSAGE_')) {
-                    Alert.alert('Error', res.data._ERROR_MESSAGE_);
+                alert(JSON.stringify(res.data))
+                if (res.data.hasOwnProperty('msg')) {
+                    Alert.alert('Error', res.data.msg);
                 } else {
                     AsyncStorage.setItem("authToken", res.data.token);
                     this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
