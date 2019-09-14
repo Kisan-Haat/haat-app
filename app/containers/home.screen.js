@@ -10,13 +10,18 @@ import colors from '../config/theme';
 
 const styles = StyleSheet.create ({
     item: {
+       //flex: '3',
        flexDirection: 'column',
        justifyContent: 'space-between',
        alignItems: 'stretch',
-       
-       //borderColor: 'colors.white',
+       paddingBottom: '2%',
+       borderColor: '#0477BF',
        borderWidth: 3,
-       //backgroundColor: 'colors.grey'
+       backgroundColor:'#0477BF',
+    },
+    image: {
+
+
     }
  })
 export default class HomeScreen extends Component {
@@ -27,7 +32,7 @@ export default class HomeScreen extends Component {
         loading: true,
         loadingMore: false,
         error:null
-
+  
     };
 
     _handleLoadMore = () => {
@@ -60,9 +65,16 @@ export default class HomeScreen extends Component {
         return (
             <View style={globalStyle.container}>
                 <HeaderComponent title="Haat Market" />
-                <Text>{I18n.t("welcome")}</Text>
-                <Currency value={1000} currency_code="EN" />
-                <FlatList data={this.state.list} renderItem={
+                
+                {/* <Text>{I18n.t("welcome")}</Text>
+                <Currency value={1000} currency_code="EN" /> */}
+                <FlatList 
+                
+                contentContainerStyle={{ paddingBottom: 55}}
+
+                //keyExtractor={(item, ) => item.id }
+                data={this.state.list}
+                renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
                         <Card>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />

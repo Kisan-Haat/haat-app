@@ -30,7 +30,7 @@ let axiosObj = axios.create({
 
 const apiHelper = {
     login: (user) => {
-        return axiosObj.post('/login', user);
+        return axiosObj.post('/api/login', user);
     },
     logout: () => {
         return AsyncStorage.clear()
@@ -39,7 +39,7 @@ const apiHelper = {
         return axiosObject.post('/api/user-profile', {});
     },
     getCropList: () => {
-        return axiosObj.get('/cropList');
+        return axiosObj.get('/api/cropList');
     }
 }
 

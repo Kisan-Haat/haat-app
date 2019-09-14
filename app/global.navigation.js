@@ -4,6 +4,8 @@ import LoginScreen from './containers/login.screen';
 import AuthLoadingScreen from './containers/authLoading.screen';
 import UserProfileScreen from './containers/userProfile.screen';
 import I18n from '../app/utils/I18n';
+import farmerPL from './containers/farmTabContainer';
+import fTC from './containers/farmTabContainer';
 
 
 const AuthNavigator  = createStackNavigator({
@@ -26,6 +28,13 @@ const MenuDrawerNavigator = createDrawerNavigator({
             drawerLabel: I18n.t("userProfile")
         },
         screen: UserProfileScreen
+    },
+    Test:{
+        navigationOptions:{
+            drawerLabel: "farmTestScreen"
+        },
+        screen: fTC
+
     }
 });
 
