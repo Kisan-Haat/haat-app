@@ -8,7 +8,7 @@ const baseUrl = 'https://hc-india.hotwax.co';
 // });
 
 let axiosObj = axios.create({
-    baseURL: "https://kissan-haat.herokuapp.com",
+    baseURL: "https://kissan-haat.herokuapp.com/api",
     timeout: 10000
 });
 
@@ -30,16 +30,16 @@ let axiosObj = axios.create({
 
 const apiHelper = {
     login: (user) => {
-        return axiosObj.post('/api/login', user);
+        return axiosObj.post('/user/login', user);
     },
     logout: () => {
         return AsyncStorage.clear()
     },
     getProfileData: () => {
-        return axiosObject.post('/api/user-profile', {});
+        return axiosObject.post('/user-profile', {});
     },
     getCropList: () => {
-        return axiosObj.get('/api/cropList');
+        return axiosObj.get('/cropList');
     }
 }
 

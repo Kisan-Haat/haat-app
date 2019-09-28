@@ -1,11 +1,7 @@
-/*Simple List
-    -Only Title, Quantity listed, Listed Price
-*/
-
 import * as React from 'react';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 
-export default FarmerPL = () => (
+export default ConsumerO = () => (
   <Card >
     
     

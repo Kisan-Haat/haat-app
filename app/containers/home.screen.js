@@ -93,51 +93,10 @@ export default class HomeScreen extends Component {
             )
                     
                 
-                /* <Card>
-
-                    var productCatalog = {
-                    food: "food",
-                    description: "description",
-                    price: price,
-                    uri: uri,
-                    };
-
-                </Card> */
-
-            /* if (this.state.isLoading) {
-                return (
-                    <View style={styles.container}>
-                        <ActivityIndicator size="large"/>
-                    </View>
-                );
-            } else {
-                return (
-
-                )
-
-            } */
-            // </View><Card.Content>
-            //             <Title>Food Name</Title>
-            //             <Paragraph>Specific Info</Paragraph>
-            //         </Card.Content>
-            //         <Card.Cover source={{ uri: 'https://static01.nyt.com/images/2018/02/21/dining/00RICEGUIDE8/00RICEGUIDE8-articleLarge.jpg' }} />
-            //         <Card.Actions>
-            //             <Button>-</Button>
-
-
-            //             <Button>+</Button>
-            //         </Card.Actions>
-            //     </Card>
-            // </View>
-
 
         
     }
 }
 
-/**
- * 
- * 
- * 
- */
+
 

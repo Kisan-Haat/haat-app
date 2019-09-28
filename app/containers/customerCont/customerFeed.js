@@ -1,30 +1,24 @@
-
-
 import React, { Component } from 'react';
 import { View, Text, ListView, FlatList, StyleSheet} from 'react-native';
-import { Button, Card, BottomNavigation, Title, Paragraph, ActivityIndicator, Modal } from 'react-native-paper';
+import { Button, Card, TextInput, BottomNavigation, Title, Paragraph, ActivityIndicator } from 'react-native-paper';
 import globalStyle from '../../global.style';
 import HeaderComponent from '../../components/header.component';
-import Currency from '../../components/currency.component';
+import I18n from '../../utils/I18n';
+import Currency from '../../components/currency.component'
 import ApiHelper from '../../utils/api.helper';
 import colors from '../../config/theme';
-import PublisherModal from './farmerPublishDialog'
-
 
 const styles = StyleSheet.create ({
     item: {
        //flex: '3',
-       width: '50%',
-       height: 'auto',
        flexDirection: 'column',
-       justifyContent: 'space-around',
+       justifyContent: 'space-between',
        alignItems: 'stretch',
-       
-       paddingTop: '4%',
+       paddingTop: '2%',
        paddingLeft: '2%',
        paddingRight: '2%',
        borderColor: '#0477BF',
-       
+       borderWidth: 3,
        backgroundColor:'#0477BF',
     },
     image: {
@@ -32,8 +26,8 @@ const styles = StyleSheet.create ({
 
     }
  })
-
-export default class FarmerPS extends Component {
+export default class ConsumerF extends Component {
+    
     state = {
         data: [],
         page: 1,
@@ -70,43 +64,47 @@ export default class FarmerPS extends Component {
             })
     }
     state = {
-        modalVisible: false,
+        text: ''
       };
-    
-      setModalVisible(visible) {
-        this.setState({modalVisible: visible});
-      }
     render() {
         return (
-            <View style={globalStyle.container}>
-                <Modal 
-                animationType="slide"
-                visable={this.state.modalVisable}
-                >
+            <View >
                 <FlatList 
-                numColumns={2}
-                //contentContainerStyle={{ paddingBottom: 55}}
+                
+                contentContainerStyle={{ paddingBottom: 55}}
+
+                //keyExtractor={(item, ) => item.id }
                 data={this.state.list}
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
-                        <Card onPress ={() => {
-                            this.setModalVisible(!this.state.modalVisible);;
-                            }}>
-                            <Card.Cover source={{uri: item.image}}/>
+                        <Card>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
-                            
-                            {/* <Card.Actions>
-                            </Card.Actions> */}
+                            <Card.Cover source={{uri: item.image}}/>
+                            <TextInput
+                                style='outlined'
+                                label='Quantity'
+                                value={this.state.text}
+                                onChangeText={text => this.setState({ text })}
+                                 
+                                keyboardType={'numeric'}
+                            />
+                            <Card.Actions>
+                                <Button>
+                                    Add to cart
+                                </Button>
+                            </Card.Actions>
                         </Card>
                         
                         
                     </View>)
                 }/>
-                </Modal>
-                
-            </View>
+                </View>
             )
                     
+                
+
+        
     }
 }
+
 
