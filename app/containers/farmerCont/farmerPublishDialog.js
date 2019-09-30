@@ -1,47 +1,31 @@
-import React, {Component} from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert} from 'react-native';
+import React from 'react'
+import { Modal, View, Image, Text, StyleSheet } from 'react-native';
 
-class PublisherModal extends Component {
-  state = {
-    modalVisible: false,
-  };
+const PublisherModal = (props) => (
+  <Modal visible={ props.display } animationType = "slide" 
+         onRequestClose={ () => console.log('closed') }>>
+    <View>
+      <Image 
+        source = { props.image } 
+        style = { styles.image } />
+      <Text style = { styles.text }>
+        { props.data }
+      </Text>
+    </View>
+  </Modal>
+)
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+const styles = StyleSheet.create({
+  image: {
+    marginTop: 20,
+    marginLeft: 90,
+    height: 200,
+    width: 200
+  },
+  text: {
+    fontSize: 20,
+    marginLeft: 150
   }
+})
 
-  render() {
-    return (
-      <View style={{marginTop: 22}}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-        </Modal>
-
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-}
 export default PublisherModal;

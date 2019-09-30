@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
-
+import { Platform, StyleSheet, View, Text, TouchableOpacity, ProgressBarAndroid, ProgressViewIOS } from 'react-native';
 export default FarmerPL = () => (
   <Card >
     

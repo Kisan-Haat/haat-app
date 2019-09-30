@@ -8,8 +8,8 @@ import HeaderComponent from '../../components/header.component';
 import Currency from '../../components/currency.component';
 import ApiHelper from '../../utils/api.helper';
 import colors from '../../config/theme';
-import PublisherModal from './farmerPublishDialog'
-
+//import PublisherModal from './farmerPublishDialog'
+import {ModalComp} from '../example/ModelExample';
 
 const styles = StyleSheet.create ({
     item: {
@@ -28,33 +28,36 @@ const styles = StyleSheet.create ({
        backgroundColor:'#0477BF',
     },
     image: {
-
-
     }
  })
 
 export default class FarmerPS extends Component {
+  
     state = {
         data: [],
         page: 1,
         loading: true,
         loadingMore: false,
-        error:null
-  
+        error:null,
+        display: false
     };
 
     _handleLoadMore = () => {
-
     }
 
-    
-    
+    triggerModal=()=>{
+        this.setState({showModal: true})
+    }
+    closeModal=()=>{
+        this.setState({showModal: false})
+    }
     constructor(props) {
         super(props);
         this.state = {
           dataSource: null,
           isLoading: true,
-          list:[]
+          list:[],
+          showModal: false
         };
         this.getCartList();
     }
@@ -79,31 +82,23 @@ export default class FarmerPS extends Component {
     render() {
         return (
             <View style={globalStyle.container}>
-                <Modal 
-                animationType="slide"
-                visable={this.state.modalVisable}
-                >
+                <Button onPress={()=>(this.triggerModal())}>modal</Button>
+                <ModalComp modalVisible={this.state.showModal} close={()=>{this.closeModal()}}/>
                 <FlatList 
                 numColumns={2}
                 //contentContainerStyle={{ paddingBottom: 55}}
                 data={this.state.list}
+                
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
-                        <Card onPress ={() => {
-                            this.setModalVisible(!this.state.modalVisible);;
-                            }}>
+                        
+                        <Card onPress={()=>(this.triggerModal())}>
                             <Card.Cover source={{uri: item.image}}/>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
-                            
-                            {/* <Card.Actions>
-                            </Card.Actions> */}
-                        </Card>
-                        
-                        
+                        </Card>        
                     </View>)
                 }/>
-                </Modal>
-                
+
             </View>
             )
                     
