@@ -17,13 +17,13 @@ const styles = StyleSheet.create ({
        paddingTop: '2%',
        paddingLeft: '2%',
        paddingRight: '2%',
-       borderColor: '#0477BF',
+       borderColor: '#ffffff',
        borderWidth: 3,
-       backgroundColor:'#0477BF',
+       backgroundColor:'#ffffff'
+       
     },
-    image: {
-
-
+    card: {
+        elevation:8,
     }
  })
 export default class ConsumerF extends Component {
@@ -77,10 +77,11 @@ export default class ConsumerF extends Component {
                 data={this.state.list}
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
-                        <Card>
+                        <Card style={styles.card}>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
                             <Card.Cover source={{uri: item.image}}/>
                             <TextInput
+                                
                                 style='outlined'
                                 label='Quantity'
                                 value={this.state.text}

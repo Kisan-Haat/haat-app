@@ -11,13 +11,13 @@ export default class ConsumerTabs extends Component {
       <Container>
         <HeaderComponent title="Buy" />
         <Tabs tabBgColor="white">
-          <Tab heading={<TabHeading style={{backgroundColor: '#0477BF'}}><Icon type="MaterialCommunityIcons" name='shopping'/><Text style={{textAlignVertical: "center",textAlign: "center",}} >{"\n"}Feed</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={{backgroundColor: '#ffffff'}}><Icon type="MaterialCommunityIcons" name='shopping'/><Text style={{textAlignVertical: "center",textAlign: "center",}} >{"\n"}Feed</Text></TabHeading>}>
             <ConsumerF />
           </Tab>
-          <Tab heading={<TabHeading style={{backgroundColor: '#0477BF'}}><Icon type="MaterialCommunityIcons" name='cart'/><Text>{"\n"}Cart</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={{backgroundColor: '#ffffff'}}><Icon type="MaterialCommunityIcons" name='cart'/><Text>{"\n"}Cart</Text></TabHeading>}>
             <ConsumerC />
           </Tab>
-          <Tab heading={<TabHeading style={{backgroundColor: '#0477BF'}}><Icon type="MaterialIcons" name='local-shipping'/><Text>{"\n"}Orders</Text></TabHeading>}>
+          <Tab heading={<TabHeading style={{backgroundColor: '#ffffff'}}><Icon type="MaterialIcons" name='local-shipping'/><Text>{"\n"}Orders</Text></TabHeading>}>
             <ConsumerO />
           </Tab>
         </Tabs>

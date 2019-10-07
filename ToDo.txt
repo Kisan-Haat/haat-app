@@ -1,0 +1,3 @@
+Finish pages
+Move localised themes to global styleSheet
+Properly Align Icons in Tab View

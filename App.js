@@ -10,7 +10,7 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#0477bf'
+    primary: '#ffffff'
   }
 }
 export default class App extends Component {

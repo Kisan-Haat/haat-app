@@ -27,7 +27,8 @@ const styles = StyleSheet.create ({
        
        //backgroundColor:'#0477BF',
     },
-    image: {
+    card: {
+        elevation:8,
     }
  })
 
@@ -93,7 +94,7 @@ export default class FarmerPS extends Component {
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
                         
-                        <Card style={{elevation:8}} onPress={()=>(this.triggerModal(item), item.hindi_name, item.image) }>
+                        <Card style={styles.card} onPress={()=>(this.triggerModal(item), item.hindi_name, item.image) }>
                             <Card.Cover source={{uri: item.image}}/>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
                         </Card>        

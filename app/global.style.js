@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'react-native-paper';
 const colors = {
-    primary: '#0477BF',
+    primary: '#000000',
     secondary: '',
     light: '#CCC',
     dark: '',
@@ -33,7 +33,7 @@ export default {
     },
     backgroundColor: {
         flex: 1,
-        backgroundColor: '#f5f5f6'
+        backgroundColor: '#f5f5f5'
     },
     bold: {
         fontWeight: 'bold'
