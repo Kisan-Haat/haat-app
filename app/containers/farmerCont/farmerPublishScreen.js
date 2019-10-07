@@ -23,30 +23,28 @@ const styles = StyleSheet.create ({
        paddingTop: '4%',
        paddingLeft: '2%',
        paddingRight: '2%',
-       borderColor: '#0477BF',
+       //borderColor: '#0477BF',
        
-       backgroundColor:'#0477BF',
+       //backgroundColor:'#0477BF',
     },
     image: {
     }
  })
 
 export default class FarmerPS extends Component {
-  
-    state = {
-        data: [],
-        page: 1,
-        loading: true,
-        loadingMore: false,
-        error:null,
-        display: false
-    };
 
     _handleLoadMore = () => {
     }
 
-    triggerModal=()=>{
-        this.setState({showModal: true})
+    triggerModal=(item)=>{
+        alert(JSON.stringify(item))
+        this.setState({
+            currentItem: item
+        });
+        this.setState({
+            showModal: true
+        })
+
     }
     closeModal=()=>{
         this.setState({showModal: false})
@@ -57,7 +55,8 @@ export default class FarmerPS extends Component {
           dataSource: null,
           isLoading: true,
           list:[],
-          showModal: false
+          showModal: false,
+          currentItem: {}
         };
         this.getCartList();
     }
@@ -79,20 +78,22 @@ export default class FarmerPS extends Component {
       setModalVisible(visible) {
         this.setState({modalVisible: visible});
       }
+    keyExtractor = item => item.id;
     render() {
         return (
             <View style={globalStyle.container}>
-                <Button onPress={()=>(this.triggerModal())}>modal</Button>
-                <ModalComp modalVisible={this.state.showModal} close={()=>{this.closeModal()}}/>
+                
+                <ModalComp modalVisible={this.state.showModal} close={()=>{this.closeModal()}} currentItem={this.state.currentItem} />
                 <FlatList 
+                keyExtractor={this.keyExtractor} 
                 numColumns={2}
-                //contentContainerStyle={{ paddingBottom: 55}}
+                contentContainerStyle={{ paddingBottom: '4%'}}
                 data={this.state.list}
                 
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
                         
-                        <Card onPress={()=>(this.triggerModal())}>
+                        <Card style={{elevation:8}} onPress={()=>(this.triggerModal(item), item.hindi_name, item.image) }>
                             <Card.Cover source={{uri: item.image}}/>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
                         </Card>        

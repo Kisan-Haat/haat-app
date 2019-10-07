@@ -61,6 +61,7 @@ export default class HomeScreen extends Component {
                 });
             })
     }
+    keyExtractor = item => item.id;
     render() {
         return (
             <View style={globalStyle.container}>
@@ -70,7 +71,10 @@ export default class HomeScreen extends Component {
                 <Currency value={1000} currency_code="EN" /> */}
                 <FlatList 
                 
+                keyExtractor={this.keyExtractor} 
+                
                 contentContainerStyle={{ paddingBottom: 55}}
+                
 
                 //keyExtractor={(item, ) => item.id }
                 data={this.state.list}
