@@ -10,6 +10,7 @@ import HeaderComponent from '../components/header.component';
 const styles = StyleSheet.create ({
   tab: {
     backgroundColor: '#ffffff',
+    color: '#000000'
     
     
   },
@@ -39,7 +40,7 @@ export default class FarmerTabs extends Component {
       
       <Container>
         <HeaderComponent title="Sell" />
-        <Tabs  tabContainerStyle={{height:screenHeight / 11}}  tabBarUnderlineStyle	={styles.tabUnderline}>
+        <Tabs  tabContainerStyle={{height:screenHeight / 10}}  tabBarUnderlineStyle	={styles.tabUnderline}>
           <Tab style={styles.title} heading={<TabHeading style={styles.tab}><Icon  type="MaterialCommunityIcons" name='playlist-plus' color='rgba(0,0,0,.6)'/><Label>Text</Label></TabHeading>}>
             <FarmerPS />
           </Tab>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, Card, Title, Paragraph, Divider, Text, Icon, StyleSheet, View } from 'react-native-paper';
+import {styles} from '../../global.style';
 //import View from 'react-native'
 //import Icon from 'native-base'
 

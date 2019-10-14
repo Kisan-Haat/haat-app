@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text, ListView, FlatList, StyleSheet} from 'react-native';
 import { Button, Card, BottomNavigation, Title, Paragraph, ActivityIndicator, Modal } from 'react-native-paper';
-import globalStyle from '../../global.style';
+//import globalStyle from '../../global.style';
 import HeaderComponent from '../../components/header.component';
 import Currency from '../../components/currency.component';
 import ApiHelper from '../../utils/api.helper';
@@ -20,7 +20,7 @@ const styles = StyleSheet.create ({
        justifyContent: 'space-around',
        alignItems: 'stretch',
        
-       paddingTop: '4%',
+       paddingTop: '5%',
        paddingLeft: '2%',
        paddingRight: '2%',
        //borderColor: '#0477BF',
@@ -29,6 +29,9 @@ const styles = StyleSheet.create ({
     },
     card: {
         elevation:8,
+    },
+    view:{
+        paddingHorizontal: 12,
     }
  })
 
@@ -82,25 +85,21 @@ export default class FarmerPS extends Component {
     keyExtractor = item => item.id;
     render() {
         return (
-            <View style={globalStyle.container}>
-                
+            <View style={styles.view}>
                 <ModalComp modalVisible={this.state.showModal} close={()=>{this.closeModal()}} currentItem={this.state.currentItem} />
                 <FlatList 
                 keyExtractor={this.keyExtractor} 
                 numColumns={2}
                 contentContainerStyle={{ paddingBottom: '4%'}}
                 data={this.state.list}
-                
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
-                        
                         <Card style={styles.card} onPress={()=>(this.triggerModal(item), item.hindi_name, item.image) }>
                             <Card.Cover source={{uri: item.image}}/>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
                         </Card>        
                     </View>)
                 }/>
-
             </View>
             )
                     

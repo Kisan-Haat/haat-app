@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, ListView, FlatList, StyleSheet} from 'react-native';
-import { Button, Card, TextInput, BottomNavigation, Title, Paragraph, ActivityIndicator } from 'react-native-paper';
+import { Button, Card, TextInput, BottomNavigation, Title, Paragraph, ActivityIndicator, Colors, Divider, TouchableRipple } from 'react-native-paper';
 import globalStyle from '../../global.style';
 import HeaderComponent from '../../components/header.component';
 import I18n from '../../utils/I18n';
 import Currency from '../../components/currency.component'
 import ApiHelper from '../../utils/api.helper';
-import colors from '../../config/theme';
+
+
 
 const styles = StyleSheet.create ({
     item: {
@@ -23,8 +24,30 @@ const styles = StyleSheet.create ({
        
     },
     card: {
+        
         elevation:8,
+        backgroundColor:'#FAFAFA',
+    },
+    button:{
+        color: '#6202EE'
+    },
+    subtext: {
+        fontSize: 12,
+
+    },
+    text: {
+        color: '#000',
+        fontSize:16
+    },
+    Title: {
+        fontSize:20
+
+    },
+    subTitle: {
+        fontSize:14
+        
     }
+
  })
 export default class ConsumerF extends Component {
     
@@ -78,19 +101,33 @@ export default class ConsumerF extends Component {
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
                         <Card style={styles.card}>
-                            <Card.Title title={item.hindi_name} subtitle={item.english_name} />
+                            
                             <Card.Cover source={{uri: item.image}}/>
+                            <Card.Title title={item.hindi_name} subtitle={item.english_name} />
+                            <Card.Actions>
+                                <TouchableRipple>
+                                    <Button icon='account-box' style={{size:52}}  uppercase={false} labelStyle={{color:'rgba(0, 0, 0, 0.87)'}}   color='#757575'>Farmer Name</Button>
+                                </TouchableRipple>
+                            </Card.Actions>
+                            <Divider inset/>
+                            <Card.Actions>
                             <TextInput
-                                
-                                style='outlined'
+                                style={{width: 213,height:56, marginRight: 60}}
+                                mode='outlined'
+                                textAlignVertical='center'
                                 label='Quantity'
                                 value={this.state.text}
-                                onChangeText={text => this.setState({ text })}
-                                 
+                                onChangeText={text => this.setState({ text })} 
                                 keyboardType={'numeric'}
                             />
+                            <Text style={styles.text}>
+                            Remaining {"\n"} 
+                            Inventory
+                            </Text>
+                            </Card.Actions>
+                            <Card.Content><Text style={styles.subtext}>Ordering in uom</Text></Card.Content>
                             <Card.Actions>
-                                <Button>
+                                <Button color= '#6202EE'>
                                     Add to cart
                                 </Button>
                             </Card.Actions>

@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'react-native-paper';
 const colors = {
     primary: '#000000',
-    secondary: '',
+    secondary: '#6202EE',
     light: '#CCC',
     dark: '',
     danger: '#B00020'
@@ -20,8 +20,8 @@ export default {
         backgroundColor: DefaultTheme.colors.surface
     },
     button: {
-        width: '40%',
-        borderColor: colors.primary,
+        
+        color: colors.secondary,
     },
     fabLong: {
         margin: 16,
