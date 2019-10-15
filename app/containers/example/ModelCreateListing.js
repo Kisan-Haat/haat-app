@@ -8,12 +8,21 @@ import {
   StyleSheet,
   Image
 } from "react-native";
-import { Button, Appbar, Card, Title, Paragraph, Divider } from "react-native-paper";
+import {
+  Button,
+  Appbar,
+  Card,
+  Title,
+  Paragraph,
+  Divider,
+  Chip,
+  TextInput,
+} from "react-native-paper";
 import { Icon } from "native-base";
 export const ModalComp = props => {
   const NH_data = () => {
     if (Object.keys(props.currentItem)) {
-      return <Text>{props.currentItem.hindi_name}</Text>;
+      return <Title>{props.currentItem.hindi_name}</Title>;
     }
     return <Text>No data</Text>;
   };
@@ -23,10 +32,8 @@ export const ModalComp = props => {
     }
     return <Text>No data</Text>;
   };
-const styles = StyleSheet.create({
-    container: {
-
-    },
+  const styles = StyleSheet.create({
+    container: {},
     ActionBar: {
       //flex: 3,
       elevation: 4,
@@ -37,9 +44,10 @@ const styles = StyleSheet.create({
       width: 50,
       height: 60,
       alignContent: "stretch",
-      
+
       left: 5
-}});
+    }
+  });
   return (
     <View style={styles.container}>
       <Modal
@@ -51,16 +59,25 @@ const styles = StyleSheet.create({
         }}
       >
         {/* Top Control Bar */}
-        <Appbar >
-          <Appbar.Action style={marginLeft=0} icon="close" style={styles.icon} onPress={props.close} />
-          <Appbar.Header><Title titleStyle={{fontSize:20}}>List Product</Title></Appbar.Header>
-          <Appbar.Content titleStyle={{textAlign: 'right', color:'#6202EE',fontSize:14}} title="Publish" />
+        <Appbar>
+          <Appbar.Action
+            style={(marginLeft = 0)}
+            icon="close"
+            style={styles.icon}
+            onPress={props.close}
+          />
+          <Appbar.Header>
+            <Title titleStyle={{ fontSize: 20 }}>List Product</Title>
+          </Appbar.Header>
+          <Appbar.Content
+            titleStyle={{ textAlign: "right", color: "#6202EE", fontSize: 14 }}
+            title="Publish"
+          />
         </Appbar>
 
         <View>
-          
-          <Image src={{uri: 'https://picsum.photos/700' }}/> 
-          <Text>E</Text>
+          <Image source={{ uri: "https://picsum.photos/700" }} />
+
           {NH_data()}
           <Button onPress={props.close}>close</Button>
           <View>
@@ -68,6 +85,7 @@ const styles = StyleSheet.create({
 
             <TouchableHighlight>
               <Text>Hide Modal</Text>
+              
             </TouchableHighlight>
           </View>
         </View>
@@ -77,7 +95,27 @@ const styles = StyleSheet.create({
           }}
         >
           <Text>Show Modal</Text>
+          
         </TouchableHighlight>
+        <View>
+          <TextInput 
+          style={{}}
+          label='Inventory'
+          onChangeText={text => this.setState({ text })}
+          />
+            
+          
+        </View>
+        <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
+          
+          <Chip onPress={() => console.log('Pressed')}>kg</Chip>
+          <Chip onPress={() => console.log('Pressed')}>mg</Chip>
+          <Chip onPress={() => console.log('Pressed')}>liters</Chip>
+          <Chip onPress={() => console.log('Pressed')}>ml</Chip>
+          <Chip onPress={() => console.log('Pressed')}>gram</Chip>
+          <Chip onPress={() => console.log('Pressed')}>unit</Chip>
+
+        </View>
       </Modal>
     </View>
   );

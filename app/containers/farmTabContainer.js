@@ -8,11 +8,15 @@ import FarmerO from './farmerCont/farmerOrders';
 import HeaderComponent from '../components/header.component';
 
 const styles = StyleSheet.create ({
+  tabIcon:{
+    color : '#757575',  
+  },
   tab: {
     backgroundColor: '#ffffff',
     color: '#000000'
-    
-    
+  },
+  atab: {
+    color: '#6202EE'
   },
   tabs:{
     //tabBarUnderlineStyle: 'rgba(0, 0, 0, 0.12)',
@@ -45,11 +49,11 @@ export default class FarmerTabs extends Component {
         >
           <Tab
             heading={
-              <TabHeading style={styles.tab}>
+              <TabHeading activeTabStyle={styles.atab} style={styles.tab}>
                 <Icon
                   type="MaterialCommunityIcons"
                   name="playlist-plus"
-                  color="rgba(0,0,0,.6)"
+                  style={styles.tabIcon}
                 />
                 <Label>Text</Label>
               </TabHeading>
@@ -63,7 +67,7 @@ export default class FarmerTabs extends Component {
                 <Icon
                   type="MaterialCommunityIcons"
                   name="store"
-                  color="rgba(0,0,0,.6)"
+                  style={styles.tabIcon}
                 />
                 <Text style={styles.title}>Published</Text>
               </TabHeading>
@@ -77,7 +81,7 @@ export default class FarmerTabs extends Component {
                 <Icon
                   type="MaterialCommunityIcons"
                   name="inbox"
-                  color="rgba(0,0,0,.6)"
+                  style={styles.tabIcon}
                 />
                 <Text style={styles.title}>Orders</Text>
               </TabHeading>
