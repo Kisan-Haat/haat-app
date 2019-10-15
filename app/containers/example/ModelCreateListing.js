@@ -76,7 +76,7 @@ export const ModalComp = props => {
         </Appbar>
 
         <View>
-          <Image source={{ uri: "https://picsum.photos/700" }} />
+          <Image source={{uri: props.currentItem.image}} style={{width:414, height: 192, resizeMode: 'stretch'}}/> 
 
           {NH_data()}
           <Button onPress={props.close}>close</Button>
