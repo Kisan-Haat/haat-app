@@ -16,22 +16,22 @@ import {
   Paragraph,
   Divider,
   Chip,
-  TextInput,
+  TextInput
 } from "react-native-paper";
 import { Icon } from "native-base";
+
 export const ModalComp = props => {
   const NH_data = () => {
     if (Object.keys(props.currentItem)) {
-      return <Title>{props.currentItem.hindi_name}</Title>;
+      return (
+        <Title style={{ fontSize: 20, marginLeft: 16 }}>
+          {props.currentItem.hindi_name}
+        </Title>
+      );
     }
     return <Text>No data</Text>;
   };
-  const image = () => {
-    if (Object.keys(props.currentItem)) {
-      return <Text>{props.currentItem.image}</Text>;
-    }
-    return <Text>No data</Text>;
-  };
+
   const styles = StyleSheet.create({
     container: {},
     ActionBar: {
@@ -46,7 +46,16 @@ export const ModalComp = props => {
       alignContent: "stretch",
 
       left: 5
+    },
+    TextInput: {
+      marginLeft: 16,
+      marginRight: 16,
+      height: 56
+    },
+    Text: {
+      marginLeft: 32
     }
+
   });
   return (
     <View style={styles.container}>
@@ -76,45 +85,37 @@ export const ModalComp = props => {
         </Appbar>
 
         <View>
-          <Image source={{uri: props.currentItem.image}} style={{width:414, height: 192, resizeMode: 'stretch'}}/> 
+          <Image
+            source={{ uri: props.currentItem.image }}
+            style={{ width: 414, height: 192, resizeMode: "stretch" }}
+          />
 
           {NH_data()}
-          <Button onPress={props.close}>close</Button>
-          <View>
-            {/* <Text>{item.hindi_name}</Text> */}
-
-            <TouchableHighlight>
-              <Text>Hide Modal</Text>
-              
-            </TouchableHighlight>
-          </View>
         </View>
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}
-        >
-          <Text>Show Modal</Text>
-          
-        </TouchableHighlight>
         <View>
-          <TextInput 
-          style={{}}
-          label='Inventory'
-          onChangeText={text => this.setState({ text })}
+          <TextInput
+            style={styles.TextInput}
+            label="Inventory"
+            onChangeText={text => this.setState({ text })}
           />
-            
-          
-        </View>
-        <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
-          
-          <Chip onPress={() => console.log('Pressed')}>kg</Chip>
-          <Chip onPress={() => console.log('Pressed')}>mg</Chip>
-          <Chip onPress={() => console.log('Pressed')}>liters</Chip>
-          <Chip onPress={() => console.log('Pressed')}>ml</Chip>
-          <Chip onPress={() => console.log('Pressed')}>gram</Chip>
-          <Chip onPress={() => console.log('Pressed')}>unit</Chip>
+          <Text style={styles.Text}>Enter how much stock you have</Text>
+          <View
+            style={{ marginLeft: 16, marginRight: 16 ,paddingTop: 22, paddingBottom: 49, flexDirection: "row", justifyContent: "space-around" }}
+          >
+            <Chip onPress={() => console.log("Pressed")}>kg</Chip>
+            <Chip onPress={() => console.log("Pressed")}>mg</Chip>
+            <Chip onPress={() => console.log("Pressed")}>liters</Chip>
+            <Chip onPress={() => console.log("Pressed")}>ml</Chip>
+            <Chip onPress={() => console.log("Pressed")}>gram</Chip>
+            <Chip onPress={() => console.log("Pressed")}>unit</Chip>
 
+          </View>
+          <TextInput
+            style={styles.TextInput}
+            label="Rate per unit"
+            onChangeText={text => this.setState({ text })}
+          />
+          <Text style={styles.Text}>Enter the price the customer will pay per unit</Text>
         </View>
       </Modal>
     </View>
