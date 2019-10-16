@@ -79,8 +79,8 @@ export const ModalComp = props => {
           </Appbar.Header>
           
           <Appbar.Content
-            titleStyle={{ textAlign: "right", color: "#6202EE", fontSize: 14 }}
-            title="Publish"
+            titleStyle={{ textAlign: "right", color: "#6202EE", fontSize: 14}}
+            title ="Publish"
           />
           
         </Appbar>
@@ -101,6 +101,7 @@ export const ModalComp = props => {
             style={styles.TextInput}
             label="Inventory"
             onChangeText={text => this.setState({ text })}
+            keyboardType={'numeric'}
           />
           <Text style={styles.Text}>Enter how much stock you have</Text>
           <View
@@ -124,6 +125,7 @@ export const ModalComp = props => {
             style={styles.TextInput}
             label="Rate per unit"
             onChangeText={text => this.setState({ text })}
+            keyboardType={'numeric'}
           />
           <Text style={styles.Text}>
             Enter the price the customer will pay per unit

@@ -53,8 +53,8 @@ const FarmerO = () => (
       
     <Divider style={{alignContent:'flex-end'}}/>
     <Card.Actions>
-      <Button>Complete</Button>
-      <Button>Contact</Button>
+      <Button color="#6202EE">Complete</Button>
+      <Button color="#6202EE">Contact</Button>
     </Card.Actions>
   </Card>
 );
