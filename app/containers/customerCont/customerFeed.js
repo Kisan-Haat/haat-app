@@ -101,7 +101,6 @@ export default class ConsumerF extends Component {
                 renderItem={
                     ({item}) => ( <View key = {(item.id)} style = {styles.item}>
                         <Card style={styles.card}>
-                            
                             <Card.Cover source={{uri: item.image}}/>
                             <Card.Title title={item.hindi_name} subtitle={item.english_name} />
                             <Card.Actions>

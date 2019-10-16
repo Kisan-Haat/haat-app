@@ -45,7 +45,7 @@ export default class FarmerPS extends Component {
   _handleLoadMore = () => {};
 
   triggerModal = item => {
-    alert(JSON.stringify(item));
+    /* alert(JSON.stringify(item)); */
     this.setState({
       currentItem: item
     });

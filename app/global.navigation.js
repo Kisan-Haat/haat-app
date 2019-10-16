@@ -1,5 +1,5 @@
 import {createAppContainer, createSwitchNavigator, createStackNavigator, createDrawerNavigator} from 'react-navigation';
-import HomeScreen from './containers/home.screen';
+//import HomeScreen from './containers/home.screen';
 import LoginScreen from './containers/login.screen';
 import AuthLoadingScreen from './containers/authLoading.screen';
 import UserProfileScreen from './containers/userProfile.screen';
@@ -18,32 +18,28 @@ const AuthNavigator  = createStackNavigator({
 })
 
 const MenuDrawerNavigator = createDrawerNavigator({
-    Home: {
-        navigationOptions: {
-            drawerLabel: I18n.t("consumerTestScreen")
+    ConsumerTabs:{
+        navigationOptions:{
+            drawerLabel: "Buy"
+
         },
-        screen: HomeScreen
-    },
-    UserProfile: {
-        navigationOptions: {
-            drawerLabel: I18n.t("userProfile")
-        },
-        screen: UserProfileScreen
+        screen: ConsumerTabs
     },
     Test:{
         navigationOptions:{
-            drawerLabel: "farmTestScreen"
+            drawerLabel: "Sell"
         },
         screen: FarmerTabs
 
     },
-    ConsumerTabs:{
-        navigationOptions:{
-            drawerLabel: "consumerTestScreen"
-
+    UserProfile: {
+        navigationOptions: {
+            drawerLabel: "User Profile"
         },
-        screen: ConsumerTabs
+        screen: UserProfileScreen
     }
+    
+    
 });
 
 const AppNavigator = createStackNavigator({

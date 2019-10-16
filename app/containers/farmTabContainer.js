@@ -55,7 +55,7 @@ export default class FarmerTabs extends Component {
                   name="playlist-plus"
                   style={styles.tabIcon}
                 />
-                <Label>Text</Label>
+                <Label>Catalog</Label>
               </TabHeading>
             }
           >

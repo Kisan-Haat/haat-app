@@ -55,7 +55,6 @@ export const ModalComp = props => {
     Text: {
       marginLeft: 32
     }
-
   });
   return (
     <View style={styles.container}>
@@ -78,10 +77,12 @@ export const ModalComp = props => {
           <Appbar.Header>
             <Title titleStyle={{ fontSize: 20 }}>List Product</Title>
           </Appbar.Header>
+          
           <Appbar.Content
             titleStyle={{ textAlign: "right", color: "#6202EE", fontSize: 14 }}
             title="Publish"
           />
+          
         </Appbar>
 
         <View>
@@ -91,6 +92,9 @@ export const ModalComp = props => {
           />
 
           {NH_data()}
+          <Title style={{ fontSize: 14, marginLeft: 16 }}>
+            {props.currentItem.english_name}
+          </Title>
         </View>
         <View>
           <TextInput
@@ -100,7 +104,14 @@ export const ModalComp = props => {
           />
           <Text style={styles.Text}>Enter how much stock you have</Text>
           <View
-            style={{ marginLeft: 16, marginRight: 16 ,paddingTop: 22, paddingBottom: 49, flexDirection: "row", justifyContent: "space-around" }}
+            style={{
+              marginLeft: 16,
+              marginRight: 16,
+              paddingTop: 22,
+              paddingBottom: 49,
+              flexDirection: "row",
+              justifyContent: "space-around"
+            }}
           >
             <Chip onPress={() => console.log("Pressed")}>kg</Chip>
             <Chip onPress={() => console.log("Pressed")}>mg</Chip>
@@ -108,14 +119,15 @@ export const ModalComp = props => {
             <Chip onPress={() => console.log("Pressed")}>ml</Chip>
             <Chip onPress={() => console.log("Pressed")}>gram</Chip>
             <Chip onPress={() => console.log("Pressed")}>unit</Chip>
-
           </View>
           <TextInput
             style={styles.TextInput}
             label="Rate per unit"
             onChangeText={text => this.setState({ text })}
           />
-          <Text style={styles.Text}>Enter the price the customer will pay per unit</Text>
+          <Text style={styles.Text}>
+            Enter the price the customer will pay per unit
+          </Text>
         </View>
       </Modal>
     </View>
