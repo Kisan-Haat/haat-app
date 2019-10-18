@@ -1,26 +1,39 @@
-import React, { Component } from 'react';
-import {StyleSheet, Text} from 'react-native';
-import { Container, Header, Content, Tab, Tabs, title, TabHeading, Icon, Row} from 'native-base';
-import ConsumerF from './customerCont/customerFeed';
-import ConsumerC from './customerCont/customerCart';
-import ConsumerO from './customerCont/customerOrder';
-import HeaderComponent from '../components/header.component';
+import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import {
+  Container,
+  Header,
+  Content,
+  Tab,
+  Tabs,
+  title,
+  TabHeading,
+  Icon,
+  Row
+} from "native-base";
+import ConsumerF from "./customerCont/customerFeed";
+import ConsumerC from "./customerCont/customerCart";
+import ConsumerO from "./customerCont/customerOrder";
+import HeaderComponent from "../components/header.component";
 
 const styles = StyleSheet.create({
-  tabIcon:{
-    color : '#757575',  
+  tabIcon: {
+    color: "#757575"
   },
-  tabUnderline:{
-    backgroundColor:'#6202EE',
+  tabUnderline: {
+    backgroundColor: "#6202EE"
   },
-  tab:{
-    backgroundColor: '#ffffff',
+  tab: {
+    backgroundColor: "#ffffff",
     flex: 1,
-    flexDirection: 'row', 
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center"
     //activeTabStyle={style: color}
+  },
+  container: {
+    margin: 15
   }
-})
+});
 export default class ConsumerTabs extends Component {
   render() {
     return (
@@ -65,7 +78,7 @@ export default class ConsumerTabs extends Component {
               </TabHeading>
             }
           >
-            <ConsumerC />
+          <ConsumerC />  
           </Tab>
           <Tab
             heading={
@@ -79,7 +92,9 @@ export default class ConsumerTabs extends Component {
               </TabHeading>
             }
           >
-            <ConsumerO />
+            <View style={styles.container}>
+              <ConsumerO />
+            </View>
           </Tab>
         </Tabs>
       </Container>

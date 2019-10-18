@@ -13,34 +13,35 @@ import {
   ProgressBarAndroid,
   ProgressViewIOS
 } from "react-native";
-import { Subtitle } from "native-base";
+
 
 export default FarmerPL = () => (
-  <Card
-    style={{
-      elevation: 2,
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: "4%"
-    }}
-  >
+  <Card>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-    <Card.Content>
-      <Title>Hindi Name</Title>
-      <Paragraph>English Name</Paragraph>
-      <Paragraph style={{ fontSize: 1 }}> </Paragraph>
+    <Card.Title
+      title="Hindi Name"
+      subtitle="English Name"
+      right={props => (
+        <Text style={{ marginRight: 25 }}>Price per uom</Text>
+      )}
+    />
 
-      <Text style={{ fontSize: 15, fontWeight: "bold" }}>Orders</Text>
-      <Text style={{ fontSize: 20 }}>Order Count</Text>
+      <Text style={{ fontSize: 10, fontWeight: "bold", paddingLeft:16 }}>ORDERS</Text>
+      <Text style={{ fontSize: 16, paddingLeft:16 }}>Order Count</Text>
 
       <Divider />
-      <Card.Actions style={{}}>
-        <Text style={{ fontSize: 15, flex: 1, paddingTop: "2%" }}>
+      <Card.Actions>
+        <Text 
+          style={{ 
+            fontSize: 10, 
+            flex: 1, 
+            paddingTop: "2%" }}
+        >
           TOTAL INV
         </Text>
         <Text
           style={{
-            fontSize: 15,
+            fontSize: 10,
             flex: 1,
             paddingTop: "2%",
             textAlign: "right",
@@ -55,11 +56,12 @@ export default FarmerPL = () => (
           styleAttr="Horizontal"
           progress={0.5}
           indeterminate={false}
+          color="#6202EE"
         />
       ) : (
-        <ProgressViewIOS progress={0.5} />
+        <ProgressViewIOS progress={0.5} progressTintColor="#6202EE" />
       )}
-    </Card.Content>
+    
     <Card.Actions>
       <Button color="#6202EE">Relist</Button>
       <Button color="#6202EE">End </Button>

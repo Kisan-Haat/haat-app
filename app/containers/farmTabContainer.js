@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Dimensions} from 'react-native'
+import {Dimensions, View} from 'react-native'
 import { Container, Header, Content, Tab, Tabs, title, TabHeading, Icon, Text, Label,} from 'native-base';
 import {StyleSheet} from 'react-native'
 import FarmerPS from './farmerCont/farmerPublishScreen';
@@ -25,6 +25,9 @@ const styles = StyleSheet.create ({
   
   tabUnderline:{
     backgroundColor:'#6202EE'
+  },
+  container:{
+    margin:20
   },
 
   title:{
@@ -59,7 +62,10 @@ export default class FarmerTabs extends Component {
               </TabHeading>
             }
           >
+           <View> 
             <FarmerPS />
+           </View> 
+            
           </Tab>
           <Tab
             heading={
@@ -73,7 +79,10 @@ export default class FarmerTabs extends Component {
               </TabHeading>
             }
           >
-            <FarmerPL />
+            <View style={styles.container}>
+              <FarmerPL />
+            </View>
+           
           </Tab>
           <Tab
             heading={
@@ -87,7 +96,9 @@ export default class FarmerTabs extends Component {
               </TabHeading>
             }
           >
+            <View style={styles.container}>
             <FarmerO />
+            </View>
           </Tab>
         </Tabs>
       </Container>

@@ -62,9 +62,7 @@ export const ModalComp = props => {
         animationType="slide"
         transparent={false}
         visible={props.modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        onRequestClose={props.close}
       >
         {/* Top Control Bar */}
         <Appbar>
@@ -88,7 +86,7 @@ export const ModalComp = props => {
         <View>
           <Image
             source={{ uri: props.currentItem.image }}
-            style={{ width: 414, height: 192, resizeMode: "stretch" }}
+            style={{ width: 414, height: 192, resizeMode: "cover" }}
           />
 
           {NH_data()}
@@ -120,6 +118,7 @@ export const ModalComp = props => {
             <Chip onPress={() => console.log("Pressed")}>ml</Chip>
             <Chip onPress={() => console.log("Pressed")}>gram</Chip>
             <Chip onPress={() => console.log("Pressed")}>unit</Chip>
+            
           </View>
           <TextInput
             style={styles.TextInput}

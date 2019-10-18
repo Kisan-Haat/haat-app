@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     //backgroundColor:'#0477BF',
   },
   card: {
-    elevation: 8
+    elevation: 1
   },
   view: {
     paddingHorizontal: 12
@@ -84,7 +84,7 @@ export default class FarmerPS extends Component {
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
-  keyExtractor = item => item.id;
+  keyExtractor = (item,index) => index.toString();
   render() {
     return (
       <View style={styles.view}>
@@ -96,11 +96,10 @@ export default class FarmerPS extends Component {
           currentItem={this.state.currentItem}
         />
         <FlatList
-          keyExtractor={this.keyExtractor}
           numColumns={2}
           contentContainerStyle={{ paddingBottom: "4%" }}
           data={this.state.list}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <View key={item.id} style={styles.item}>
               <Card
                 style={styles.card}
@@ -116,6 +115,7 @@ export default class FarmerPS extends Component {
               </Card>
             </View>
           )}
+          keyExtractor={this.keyExtractor}
         />
       </View>
     );

@@ -20,7 +20,7 @@ const AuthNavigator  = createStackNavigator({
 const MenuDrawerNavigator = createDrawerNavigator({
     ConsumerTabs:{
         navigationOptions:{
-            drawerLabel: "Buy"
+            drawerLabel: "Buy "
 
         },
         screen: ConsumerTabs
