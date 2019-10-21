@@ -22,7 +22,6 @@ import ApiHelper from "../../utils/api.helper";
 
 const styles = StyleSheet.create({
   item: {
-    
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "stretch",
@@ -101,7 +100,7 @@ export default class ConsumerC extends Component {
       <View>
         <FAB
           style={styles.fab}
-          icon="cart-arrow-right"
+          icon="send"
           onPress={() => console.log("Pressed")}
         />
         <FlatList

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Card, Title, Paragraph, Divider, Text, Icon, StyleSheet, View } from 'react-native-paper';
+import { Button, Card, Title, Paragraph, Divider, Text, Icon, StyleSheet, View, Headline } from 'react-native-paper';
+
 
 const FarmerO = () => (
   <Card>
@@ -12,14 +13,18 @@ const FarmerO = () => (
       )}
     />
 
-    <Card.Content>
-      <Button icon="account-box" color="#757575" label="Customer Name" />
-      <Text>Customer Name</Text>
-      <Button icon="phone" color="#757575"/>
-      <Text>Contact Number</Text>
-    </Card.Content>
-
-    <Divider style={{ alignContent: "flex-end" }} />
+    <Card.Actions>
+      <Button icon="account-box" color="#757575" uppercase={false}>   Contact Name</Button>
+    </Card.Actions>
+    <Divider inset="true"/>
+    <Card.Actions>
+      <Button icon="phone" color="#757575" uppercase={false}>   Contact Number</Button>
+    </Card.Actions>
+    <Headline style={{paddingLeft:16, fontSize:60}}>Qty uom</Headline>
+    <Card.Actions>
+      <Button icon="map-marker" color="#757575" uppercase={false}>   Address Name </Button>
+    </Card.Actions>
+    <Divider inset="true"/>
     <Card.Actions>
       <Button color="#6202EE">Complete</Button>
       <Button color="#6202EE">Contact</Button>

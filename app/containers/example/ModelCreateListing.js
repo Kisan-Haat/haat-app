@@ -6,7 +6,8 @@ import {
   View,
   Alert,
   StyleSheet,
-  Image
+  Image,
+  ScrollView
 } from "react-native";
 import {
   Button,
@@ -19,6 +20,8 @@ import {
   TextInput
 } from "react-native-paper";
 import { Icon } from "native-base";
+
+const units = ["kg", "mg", "liter", "ml", "gram", "unit"];
 
 export const ModalComp = props => {
   const NH_data = () => {
@@ -54,6 +57,9 @@ export const ModalComp = props => {
     },
     Text: {
       marginLeft: 32
+    },
+    chip:{
+      paddingLeft:5,
     }
   });
   return (
@@ -112,13 +118,14 @@ export const ModalComp = props => {
               justifyContent: "space-around"
             }}
           >
+            <ScrollView horizontal={true} paddingLeft={50}>
             <Chip onPress={() => console.log("Pressed")}>kg</Chip>
             <Chip onPress={() => console.log("Pressed")}>mg</Chip>
             <Chip onPress={() => console.log("Pressed")}>liters</Chip>
             <Chip onPress={() => console.log("Pressed")}>ml</Chip>
             <Chip onPress={() => console.log("Pressed")}>gram</Chip>
             <Chip onPress={() => console.log("Pressed")}>unit</Chip>
-            
+            </ScrollView>
           </View>
           <TextInput
             style={styles.TextInput}
