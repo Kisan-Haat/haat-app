@@ -16,7 +16,7 @@ const theme = {
 export default class App extends Component {
   render() {
     return (
-        <StoreProvider store={store}>
+         <StoreProvider store={store}>
           <PaperProvider theme={theme}>
             <AppContainer />
           </PaperProvider>

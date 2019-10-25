@@ -133,6 +133,9 @@ export default class ConsumerC extends Component {
                 <Card.Actions>
                   <TextInput
                     style={{ width: 213, height: 56, marginRight: 60 }}
+                    selectionColor="#757575"
+                    underlineColor="#757575"
+                    
                     mode="outlined"
                     textAlignVertical="center"
                     label="Quantity"

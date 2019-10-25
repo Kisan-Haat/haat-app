@@ -57,7 +57,11 @@ export default class ConsumerTabs extends Component {
                   name="shopping"
                 />
                 <Text
-                  style={{ textAlignVertical: "center", textAlign: "center" }}
+                  style={{
+                    textAlignVertical: "center",
+                    textAlign: "center",
+                    marginLeft: 5
+                  }}
                 >
                   Feed
                 </Text>
@@ -74,11 +78,19 @@ export default class ConsumerTabs extends Component {
                   type="MaterialCommunityIcons"
                   name="cart"
                 />
-                <Text>Cart</Text>
+                <Text
+                  style={{
+                    textAlignVertical: "center",
+                    textAlign: "center",
+                    marginLeft: 5
+                  }}
+                >
+                  Cart
+                </Text>
               </TabHeading>
             }
           >
-          <ConsumerC />  
+            <ConsumerC />
           </Tab>
           <Tab
             heading={
@@ -88,7 +100,15 @@ export default class ConsumerTabs extends Component {
                   type="MaterialIcons"
                   name="local-shipping"
                 />
-                <Text>Orders</Text>
+                <Text
+                  style={{
+                    textAlignVertical: "center",
+                    textAlign: "center",
+                    marginLeft: 5
+                  }}
+                >
+                  Orders
+                </Text>
               </TabHeading>
             }
           >

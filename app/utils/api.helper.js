@@ -7,12 +7,12 @@ const baseUrl = 'https://hc-india.hotwax.co';
 //     timeout: 10000
 // });
 
-let axiosObj = axios.create({
+let axiosObject = axios.create({
     baseURL: "https://kissan-haat.herokuapp.com/api",
     timeout: 10000
 });
 
-// axiosObject.interceptors.request.use(async (config) => {
+// axiosObjectect.interceptors.request.use(async (config) => {
 //     const token = await AsyncStorage.getItem("authToken");
 //     if (token != null) {
 //         config.headers.Authorization = 'Bearer ' + token;
@@ -22,7 +22,7 @@ let axiosObj = axios.create({
 //     return Promise.reject(error);
 // });
 
-// axiosObject.interceptors.response.use(function (config) {
+// axiosObjectect.interceptors.response.use(function (config) {
 //     return config;
 // }, function (error) {
 //     return Promise.reject(error);
@@ -30,7 +30,7 @@ let axiosObj = axios.create({
 
 const apiHelper = {
     login: (user) => {
-        return axiosObj.post('/user/login', user);
+        return axiosObject.post('/user/login', user);
     },
     logout: () => {
         return AsyncStorage.clear()
@@ -39,8 +39,9 @@ const apiHelper = {
         return axiosObject.post('/user-profile', {});
     },
     getCropList: () => {
-        return axiosObj.get('/cropList');
+        return axiosObject.get('/cropList');
     }
 }
 
 export default apiHelper;
+export  const axiosObj = axiosObject
