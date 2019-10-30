@@ -47,7 +47,7 @@ export default class FarmerTabs extends Component {
       <Container>
         <HeaderComponent title="Sell" />
         <Tabs
-          tabContainerStyle={{ height: screenHeight / 10, elevation: 0 }}
+          tabContainerStyle={{ height: 72, elevation: 0 }}
           tabBarUnderlineStyle={styles.tabUnderline}
         >
           <Tab
