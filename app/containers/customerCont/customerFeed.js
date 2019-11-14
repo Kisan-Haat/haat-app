@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import dispatch from "react-redux";
 import { View, Text, ListView, FlatList, StyleSheet } from "react-native";
 import {
   Button,
@@ -17,6 +18,7 @@ import HeaderComponent from "../../components/header.component";
 import I18n from "../../utils/I18n";
 import Currency from "../../components/currency.component";
 import ApiHelper from "../../utils/api.helper";
+import { ADD_TO_CART } from "../../constants/ActionTypes";
 
 const styles = StyleSheet.create({
   item: {
@@ -53,13 +55,6 @@ const styles = StyleSheet.create({
   }
 });
 export default class ConsumerF extends Component {
-  state = {
-    data: [],
-    page: 1,
-    loading: true,
-    loadingMore: false,
-    error: null
-  };
 
   _handleLoadMore = () => {};
 
@@ -68,7 +63,14 @@ export default class ConsumerF extends Component {
     this.state = {
       dataSource: null,
       isLoading: true,
-      list: []
+      list: [],
+      cart: [],
+      data: [],
+      page: 1,
+      loading: true,
+      loadingMore: false,
+      error: null,
+      text: ""
     };
     this.getCartList();
   }
@@ -83,10 +85,21 @@ export default class ConsumerF extends Component {
       console.log("data ===== ",res.data.docs)
     });
   };
-  state = {
-    text: ""
-  };
+
   keyExtractor = (item,index) => index.toString();
+  
+  addToCart(item){
+    let updateCart = this.state.cart || [];
+    updateCart.push(item);
+    this.setState({cart: updateCart})
+    alert("add to cart"+ JSON.stringify(this.state.cart));
+
+    dispatch.addToCart({
+      type: ADD_TO_CART,
+      payload: this.cart,
+    })
+  }
+
   render() {
     return (
       <View>
@@ -124,7 +137,10 @@ export default class ConsumerF extends Component {
                     textAlignVertical="center"
                     label="Quantity"
                     value={this.state.text}
-                    onChangeText={text => this.setState({ text })}
+                    onChangeText={text => {
+                      this.setState({ text });
+                      item.quantity = text
+                  }}
                     keyboardType={"numeric"}
                   />
                   <Text style={styles.text}>
@@ -136,7 +152,7 @@ export default class ConsumerF extends Component {
                   <Text style={styles.subtext}>Ordering in uom</Text>
                 </Card.Content>
                 <Card.Actions>
-                  <Button color="#6202EE">Add to cart</Button>
+                  <Button color="#6202EE" onPress={()=>this.addToCart(item)}>Add to cart</Button>
                 </Card.Actions>
               </Card>
             </View>

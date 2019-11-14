@@ -1,6 +1,8 @@
 import {createAppContainer, createSwitchNavigator, createStackNavigator, createDrawerNavigator} from 'react-navigation';
 //import HomeScreen from './containers/home.screen';
-import LoginScreen from './containers/login.screen';
+import SignUpScreen from './containers/signUp';
+import Login from './containers/login.screen';
+
 import AuthLoadingScreen from './containers/authLoading.screen';
 import UserProfileScreen from './containers/userProfile.screen';
 import I18n from '../app/utils/I18n';
@@ -10,7 +12,13 @@ import ConsumerTabs from './containers/consumerTabContainer'
 
 
 const AuthNavigator  = createStackNavigator({
-    Login: LoginScreen
+    SignUp:{
+        screen: SignUpScreen
+}, 
+    LoginIn:{
+        screen: Login
+    }
+
 },
 {
     mode: 'modal',

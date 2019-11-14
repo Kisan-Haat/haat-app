@@ -15,7 +15,7 @@ import Currency from "../../components/currency.component";
 import ApiHelper from "../../utils/api.helper";
 import colors from "../../config/theme";
 //import PublisherModal from './farmerPublishDialog'
-import { ModalComp } from "../example/ModelCreateListing";
+import { ModalComp } from "../Modal/ModelCreateListing";
 
 const styles = StyleSheet.create({
   item: {
