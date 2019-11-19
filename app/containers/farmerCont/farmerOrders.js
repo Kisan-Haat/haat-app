@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Button, Card, Title, Paragraph, Divider, Text, Icon, StyleSheet, View, Headline } from 'react-native-paper';
 
 
-const FarmerO = () => (
+FarmerO = () => (
+  
   <Card>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
     <Card.Title
@@ -20,10 +21,8 @@ const FarmerO = () => (
     <Card.Actions>
       <Button icon="phone" color="#757575" uppercase={false}>   Contact Number</Button>
     </Card.Actions>
-    <Headline style={{paddingLeft:16, fontSize:60}}>Qty uom</Headline>
-    <Card.Actions>
-      <Button icon="map-marker" color="#757575" uppercase={false}>   Address Name </Button>
-    </Card.Actions>
+    <Headline style={{paddingLeft:16, fontSize:60, paddingTop:30}}>Qty uom</Headline>
+    
     <Divider inset="true"/>
     <Card.Actions>
       <Button color="#6202EE">Complete</Button>

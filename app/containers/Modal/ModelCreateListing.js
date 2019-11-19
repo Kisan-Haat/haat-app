@@ -7,7 +7,8 @@ import {
   Alert,
   StyleSheet,
   Image,
-  ScrollView
+  ScrollView,
+  LinearGradient
 } from "react-native";
 import {
   Button,
@@ -59,7 +60,7 @@ export const ModalComp = props => {
       marginLeft: 32
     },
     chip:{
-      paddingLeft:5,
+      marginRight:5,
     }
   });
   return (
@@ -115,10 +116,17 @@ export const ModalComp = props => {
               paddingTop: 22,
               paddingBottom: 49,
               flexDirection: "row",
-              justifyContent: "space-around"
+              justifyContent: "space-between"
             }}
           >
-            <ScrollView horizontal={true} paddingLeft={50}>
+            <ScrollView horizontal={true} >
+              
+            <Chip onPress={() => console.log("Pressed")}>kg</Chip>
+            <Chip onPress={() => console.log("Pressed")}>mg</Chip>
+            <Chip onPress={() => console.log("Pressed")}>liters</Chip>
+            <Chip onPress={() => console.log("Pressed")}>ml</Chip>
+            <Chip onPress={() => console.log("Pressed")}>gram</Chip>
+            <Chip onPress={() => console.log("Pressed")}>unit</Chip>
             <Chip onPress={() => console.log("Pressed")}>kg</Chip>
             <Chip onPress={() => console.log("Pressed")}>mg</Chip>
             <Chip onPress={() => console.log("Pressed")}>liters</Chip>

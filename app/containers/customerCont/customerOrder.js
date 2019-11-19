@@ -23,7 +23,7 @@ export default ConsumerO = () => (
     </Card.Actions>
     <Divider inset="true" />
     <Card.Content style={innerHeight=60} >
-      <Headline style={{fontSize:60}}>
+      <Headline style={{fontSize:60, paddingTop:30}}>
         Qty uom
       </Headline>
     </Card.Content>

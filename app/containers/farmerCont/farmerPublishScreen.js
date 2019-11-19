@@ -84,7 +84,7 @@ export default class FarmerPS extends Component {
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
-  keyExtractor = (item,index) => index.toString();
+  keyExtractor = (item, index) => index.toString();
   render() {
     return (
       <View style={styles.view}>

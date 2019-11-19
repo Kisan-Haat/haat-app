@@ -12,17 +12,14 @@ import ConsumerTabs from './containers/consumerTabContainer'
 
 
 const AuthNavigator  = createStackNavigator({
-    SignUp:{
-        screen: SignUpScreen
-}, 
+       
     LoginIn:{
         screen: Login
-    }
+    },
+    SignUp:{
+        screen: SignUpScreen
+    },
 
-},
-{
-    mode: 'modal',
-    headerMode: 'none'
 })
 
 const MenuDrawerNavigator = createDrawerNavigator({
@@ -45,7 +42,7 @@ const MenuDrawerNavigator = createDrawerNavigator({
             drawerLabel: "User Profile"
         },
         screen: UserProfileScreen
-    }
+    },
     
     
 });

@@ -8,7 +8,8 @@ const colors = {
 }
 export default {
     padded: {
-        padding: 8
+        padding: 8,
+        
     },
     flRow: {
         flexDirection: 'row',
@@ -17,7 +18,7 @@ export default {
         flexDirection: 'column',
     },
     txtInput: {
-        backgroundColor: DefaultTheme.colors.surface
+        backgroundColor: DefaultTheme.colors.light
     },
     button: {
         

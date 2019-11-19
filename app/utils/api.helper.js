@@ -40,6 +40,12 @@ const apiHelper = {
     },
     getCropList: () => {
         return axiosObject.get('/cropList');
+    },
+    getPublishedProducts: () => {
+        return axiosObject.get('/seller/getPublishedProducts')
+    },
+    createListing: () => {
+        return axiosObject.get('/seller/createSell')
     }
 }
 
