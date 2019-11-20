@@ -32,6 +32,9 @@ const apiHelper = {
     login: (user) => {
         return axiosObject.post('/user/login', user);
     },
+    signUp: (newUser) => {
+        return axiosObject.post('/user/create', newUser);
+    },
     logout: () => {
         return AsyncStorage.clear()
     },

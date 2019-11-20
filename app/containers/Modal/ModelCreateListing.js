@@ -80,11 +80,11 @@ export const ModalComp = props => {
             onPress={props.close}
           />
           <Appbar.Header>
-            <Title titleStyle={{ fontSize: 20 }}>List Product</Title>
+            <Title titleStyle={{ fontSize: 20, color: "#FFF" }}>List Product</Title>
           </Appbar.Header>
           
           <Appbar.Content
-            titleStyle={{ textAlign: "right", color: "#6202EE", fontSize: 14}}
+            titleStyle={{ textAlign: "right", color: "#FFF", fontSize: 14}}
             title ="Publish"
           />
           

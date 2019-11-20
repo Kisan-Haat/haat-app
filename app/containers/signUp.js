@@ -5,7 +5,8 @@ import {
   Image,
   AsyncStorage,
   Alert,
-  SafeAreaView
+  SafeAreaView,
+  KeyboardAvoidingView
 } from "react-native";
 import {
   Card,
@@ -30,8 +31,8 @@ export default class LoginScreen extends Component {
       lastname: "",
       password: "",
       verifypassword: "",
-      email: "",
-      isFarmer: false,
+      phone: "",
+      // isFarmer: false,
       visable: false
     };
   }
@@ -46,55 +47,56 @@ export default class LoginScreen extends Component {
             source={require("../assets/images/hcCrop.png")}
             style={styles.Image}
           />
-          <Card style={{ marginTop: 50 }}>
-            <Card.Content>
-              <Title>Welcome</Title>
-              <Divider></Divider>
-              <Text style={{ marginTop: 10 }}>
-                Please enter your information below
-              </Text>
-            </Card.Content>
-            <Card.Actions style={{ justifyContent: "space-evenly" }}>
-              <TextInput
-                label={"First Name"}
-                style={styles.inputWrap}
-                value={this.state.FIRSTNAME}
-                onChangeText={text => this.setState({ FIRSTNAME: text })}
-              />
-              <TextInput
-                label={"Last Name"}
-                style={styles.inputWrap}
-                value={this.state.LASTNAME}
-                onChangeText={text => this.setState({ LASTNAME: text })}
-              />
-            </Card.Actions>
-            <Card.Content>
-              <TextInput
-                label={"Mobile Phone Number"}
-                style={globalstyle.txtInput}
-                value={this.state.email}
-                onChangeText={text => this.setState({ email: text })}
-              />
-              <TextInput
-                label={"Password"}
-                secureTextEntry={true}
-                style={globalstyle.txtInput}
-                value={this.state.PASSWORD}
-                onChangeText={text => this.setState({ PASSWORD: text })}
-              />
-              <TextInput
-                label={"Verify Password"}
-                selectionColor={"#000"}
-                secureTextEntry={true}
-                style={globalstyle.txtInput}
-                value={this.state.VERIFYPASSWORD}
-                onChangeText={text => this.setState({ VERIFYPASSWORD: text })}
-              />
-            </Card.Content>
-          </Card>
+          <KeyboardAvoidingView behavior="position" enabled>
+            <Card style={{ marginTop: 50 }}>
+              <Card.Content>
+                <Title>Welcome</Title>
+                <Divider></Divider>
+                <Text style={{ marginTop: 10 }}>
+                  Please enter your information below
+                </Text>
+              </Card.Content>
+              <Card.Actions style={{ justifyContent: "space-evenly" }}>
+                <TextInput
+                  label={"First Name"}
+                  style={styles.inputWrap}
+                  value={this.state.FIRSTNAME}
+                  onChangeText={text => this.setState({ FIRSTNAME: text })}
+                />
+                <TextInput
+                  label={"Last Name"}
+                  style={styles.inputWrap}
+                  value={this.state.LASTNAME}
+                  onChangeText={text => this.setState({ LASTNAME: text })}
+                />
+              </Card.Actions>
+              <Card.Content>
+                <TextInput
+                  label={"Mobile Phone Number"}
+                  style={globalstyle.txtInput}
+                  value={this.state.PHONE}
+                  onChangeText={text => this.setState({ PHONE: text })}
+                />
+                <TextInput
+                  label={"Password"}
+                  secureTextEntry={true}
+                  style={globalstyle.txtInput}
+                  value={this.state.PASSWORD}
+                  onChangeText={text => this.setState({ PASSWORD: text })}
+                />
+                <TextInput
+                  label={"Verify Password"}
+                  secureTextEntry={true}
+                  style={globalstyle.txtInput}
+                  value={this.state.VERIFYPASSWORD}
+                  onChangeText={text => this.setState({ VERIFYPASSWORD: text })}
+                />
+              </Card.Content>
+            </Card>
+          </KeyboardAvoidingView>
           <Button
             mode="contained"
-            onPress={() => this.submit()}
+            onPress={() => this.signUp()}
             style={styles.Button}
           >
             Submit
@@ -103,19 +105,42 @@ export default class LoginScreen extends Component {
       </SafeAreaView>
     );
   }
-}
 
-submit = () => {
+
+signUp = () => {
   if (this.state.PASSWORD === this.state.VERIFYPASSWORD) {
     let newUser = {
-      name: this.state.firstname,
+      partyName: this.state.FIRSTNAME,
       phone: this.state.PHONE,
-      password: this.state.PASSWORD
+      password: this.state.PASSWORD,
+      role: "buyer"
     };
-
+    alert(JSON.stringify(newUser));
+    ApiHelper.signUp(newUser).then(res => {
+      alert(JSON.stringify(res.data));
+      if (res.data.hasOwnProperty("msg")) {
+        Alert.alert("Error", res.data.msg);
+      } else {
+        let user = {
+          phone: this.state.PHONE,
+          password: this.state.PASSWORD
+        };
+        ApiHelper.login(user).then(res => {
+          alert(JSON.stringify(res.data));
+          if (res.data.hasOwnProperty("msg")) {
+            Alert.alert("Error", res.data.msg);
+          } else {
+            Alert.alert("SUCCESS!");
+            AsyncStorage.setItem("authToken", res.data.token);
+            this.props.navigation.navigate(res.data.token ? "App" : "Auth");
+          }
+        });
+      }
+    });
     // <Snackbar style={{backgroundColor:'#6202EE'}}>
-    //     Success!
+    //     Success! Please sign in with your new credentials
     // </Snackbar>;
+    //
   } else {
     Alert.alert(
       "Password Mismatch",
@@ -125,26 +150,7 @@ submit = () => {
     );
   }
 };
-login = () => {
-  let user = {
-    phone: this.state.PHONE,
-    password: this.state.PASSWORD
-  };
-  alert(JSON.stringify(user));
-  ApiHelper.login(user)
-    .then(res => {
-      alert(JSON.stringify(res.data));
-      if (res.data.hasOwnProperty("msg")) {
-        Alert.alert("Error", res.data.msg);
-      } else {
-        AsyncStorage.setItem("authToken", res.data.token);
-        this.props.navigation.navigate(res.data.token ? "App" : "Auth");
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
+}
 
 const styles = StyleSheet.create({
   Button: {
@@ -163,6 +169,8 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "5%",
     width: "30%",
-    height: "21%"
+    height: "20%"
   }
 });
+
+

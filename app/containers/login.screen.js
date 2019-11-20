@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image, AsyncStorage, Alert, SafeAreaView } from 'react-native';
-import { Card, TextInput, Button, Divider } from 'react-native-paper';
+import { Card, TextInput, Button, Divider, Text } from 'react-native-paper';
 
 import globalstyle from '../global.style';
 import ApiHelper from '../utils/api.helper';
@@ -64,8 +64,8 @@ export default class LoginScreen extends Component {
                                 onChangeText={(text) => this.setState({ PASSWORD: text })}
                             />
                             <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{"login"}</Button>
-
-                            <Button mode='contained' onPress={() => navigate('SignUp')} style={styles.Button}>{"Register"}</Button>
+                            
+                            <Button mode='outlined' onPress={() => navigate('SignUp')} style={{ marginTop: '5%'}}>{"Register"}</Button>
                     
                             {/* <Button mode='contained' onPress={() => this.login()} style={styles.Button}>Sign Up</Button>  */}
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         height: '30%'
     },
     Button: {
-        marginTop: '5%'
+        marginTop: '10%'
     },
     bottom: {
         
