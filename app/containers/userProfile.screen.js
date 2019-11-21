@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import HeaderComponent from '../components/header.component';
 import Apihelper from '../utils/api.helper';
 import { ActivityIndicator, withTheme, Card, Avatar, List, Text, Button } from 'react-native-paper';
@@ -10,7 +10,6 @@ class UserProfileScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loading: true,
             user: null
         }
     }
@@ -18,43 +17,47 @@ class UserProfileScreen extends Component {
         Apihelper.logout().then(() => this.props.navigation.navigate('Auth')).catch();
     }
     componentDidMount() {
-        Apihelper.getProfileData()
-            .then(response => {
-                this.setState({
-                    loading: false,
-                    user: response.data
-                });
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false
-                });
-            });
+        AsyncStorage.getItem('authData').then(user =>{
+            this.setState({user: JSON.parse(user)})
+            alert('phone '+ JSON.parse(user).phone)
+        } )
+      
+        // Apihelper.getProfileData()
+        //     .then(response => {
+        //         this.setState({
+        //             loading: false,
+        //             user: response.data
+        //         });
+        //     })
+        //     .catch(error => {
+        //         this.setState({
+        //             loading: false
+        //         });
+        //     });
     }
     render() {
-        const { loading, user } = this.state;
+        const { user } = this.state;
         const { colors } = this.props.theme;
         return (
             <View>
                 <HeaderComponent title="React Native SDK" />
                 <View style={globalStyle.padded}>
                     {
-                        (loading)
-                            ? <ActivityIndicator color={colors.primary} />
-                            : <View>
-                                <Card>
+                         <View>
+                              {/*   <Card>
                                     <Card.Content style={[globalStyle.flRow, { justifyContent: 'center' }]}>
                                         <Avatar.Icon size={80} icon="person" />
                                     </Card.Content>
                                     <Card.Content>
                                         <List.Section>
                                             <List.Subheader>{I18n.t("userProfile")}</List.Subheader>
+                    <Text>{JSON.stringify(user)}</Text>
                                             <List.Item
-                                                title={user.partyName}
+                                                title={user.phone}
                                                 left={() => <List.Icon icon="person" />}
                                             />
                                             <List.Item
-                                                title={user.email}
+                                                title={user.id}
                                                 left={() => <List.Icon icon="email" />}
                                             />
                                             {
@@ -76,7 +79,7 @@ class UserProfileScreen extends Component {
                                             }
                                         </List.Section>
                                     </Card.Content>
-                                </Card>
+                                </Card> */}
                                 <View style={{ paddingTop: 8 }}>
                                     <Button mode="contained" onPress={this._logout}>{I18n.t("logout")}</Button>
                                 </View>

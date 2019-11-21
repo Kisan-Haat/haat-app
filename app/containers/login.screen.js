@@ -28,7 +28,9 @@ export default class LoginScreen extends Component {
             if (res.data.hasOwnProperty('msg')) {
                  Alert.alert('Error', res.data.msg);
              } else {
+                 console.log("data ======> ", res.data)
                  AsyncStorage.setItem("authToken", res.data.token);
+                 AsyncStorage.setItem("authData", JSON.stringify(res.data)).then(data => alert(data));
                  this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
              }
          })

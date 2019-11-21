@@ -38,9 +38,9 @@ const apiHelper = {
     logout: () => {
         return AsyncStorage.clear()
     },
-    getProfileData: () => {
-        return axiosObject.post('/user-profile', {});
-    },
+    // getProfileData: () => {
+    //     return axiosObject.post('/user-profile', {});
+    // },
     getCropList: () => {
         return axiosObject.get('/cropList');
     },
