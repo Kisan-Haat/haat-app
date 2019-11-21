@@ -21,11 +21,13 @@ export default class LoginScreen extends Component {
       phone: this.state.PHONE,
       password: this.state.PASSWORD
      }
-     alert(JSON.stringify(user));
+     alert(JSON.stringify('gate 1 pass',user)); //gate 1
      ApiHelper.login(user)
          .then(res => {
-             alert(JSON.stringify(res.data))
+            alert('gate 2 pass') //gate 2
+            alert(JSON.stringify(res.data))
             if (res.data.hasOwnProperty('msg')) {
+                alert('gate 3 pass')
                  Alert.alert('Error', res.data.msg);
              } else {
                  console.log("data ======> ", res.data)

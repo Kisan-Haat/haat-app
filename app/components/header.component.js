@@ -15,7 +15,7 @@ class HeaderComponent extends React.Component {
     render() {
         const { title } = this.props;
         return (
-            <Appbar.Header style={{elevation:6}}>
+            <Appbar.Header style={{elevation:6, backgroundColor:'#fff'}}>
                 <Appbar.Action icon="menu" onPress={() => { this._onMore() }} />
                 <Appbar.Content
                     title={title}
