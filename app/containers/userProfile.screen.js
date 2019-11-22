@@ -6,7 +6,8 @@ import {
   Platform,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Str
 } from "react-native";
 import { Icon } from "react-native-paper";
 import HeaderComponent from "../components/header.component";
@@ -19,7 +20,7 @@ import {
   List,
   Button
 } from "react-native-paper";
-import colors from '../config/theme'
+import colors from "../config/theme";
 import I18n from "../utils/I18n";
 import { Container } from "native-base";
 
@@ -27,7 +28,9 @@ class UserProfileScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      name: "",
+      phone: ""
     };
   }
   _logout = () => {
@@ -55,32 +58,37 @@ class UserProfileScreen extends Component {
     //     });
   }
   render() {
-    const { user } = this.state;
-    const { colors } = this.props.theme;
     return (
       <Container>
-      <HeaderComponent
+        <HeaderComponent
           style={{ shadowColor: "transparent", elevation: 6 }}
           title="Profile"
-      />
-      
+        />
+
         <View style={styles.header}></View>
-        <Image style={styles.avatar} source={require('../assets/images/account-circle.png')}/>
+        <Image
+          style={styles.avatar}
+          source={require("../assets/images/account-circle.png")}
+        />
         <View style={styles.body}>
           <View style={styles.bodyContent}>
-            <Text style={styles.name}>User Name</Text>
-            <Text style={styles.phone}>Phone Number</Text>
-            
-            <Button mode='contained' style={styles.buttonContainer} onPress={this._logout}>logout
-              
-            </Button>
+            <Text style={styles.name}>{JSON.stringify(this.state.user)}</Text>
+            <Text style={styles.phone}>Phone Number </Text>
+
             {/* <Button style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Previous Orders
               </Text>
             </Button> */}
           </View>
+          <Button
+            mode="contained"
+            style={{ marginTop: 400, marginLeft:10, marginRight:10 }}
+            onPress={this._logout}
+          >
+            logout
+          </Button>
         </View>
-        </Container>
+      </Container>
     );
   }
 }
@@ -89,20 +97,18 @@ export default withTheme(UserProfileScreen);
 const styles = StyleSheet.create({
   header: {
     backgroundColor: "#6202EE",
-    height: 200
+    height: 100
   },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: "white",
+    width: 56,
+    height: 56,
+
     marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
-    marginTop: 100
+    marginTop: 80
   },
-  
+
   body: {
     marginTop: 40
   },
@@ -131,6 +137,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center"
   },
+  
   buttonContainer: {
     marginTop: 80,
     height: 50,
@@ -138,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: 300,
-    
+
     backgroundColor: "#6202EE"
   }
 });

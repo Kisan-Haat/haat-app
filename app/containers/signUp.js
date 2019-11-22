@@ -137,10 +137,7 @@ signUp = () => {
         });
       }
     });
-    // <Snackbar style={{backgroundColor:'#6202EE'}}>
-    //     Success! Please sign in with your new credentials
-    // </Snackbar>;
-    //
+    
   } else {
     Alert.alert(
       "Password Mismatch",
