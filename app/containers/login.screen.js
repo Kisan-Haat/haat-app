@@ -25,6 +25,7 @@ export default class LoginScreen extends Component {
      ApiHelper.login(user)
          .then(res => {
             alert('gate 2 pass') //gate 2
+            if(res.status === 200){
             alert(JSON.stringify(res.data))
             if (res.data.hasOwnProperty('msg')) {
                 alert('gate 3 pass')
@@ -35,9 +36,15 @@ export default class LoginScreen extends Component {
                  AsyncStorage.setItem("authData", JSON.stringify(res.data)).then(data => alert(data));
                  this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
              }
+            }
+            else{
+                alert(JSON.stringify(res.data))
+            }
          })
          .catch(error => {
+           alert('unautorized Access')
              console.log(error);
+             return;
          });
         }
 

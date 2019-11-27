@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Str
 } from "react-native";
-import { Icon } from "react-native-paper";
+import { Icon, Divider } from "react-native-paper";
 import HeaderComponent from "../components/header.component";
 import Apihelper from "../utils/api.helper";
 import {
@@ -41,21 +41,10 @@ class UserProfileScreen extends Component {
   componentDidMount() {
     AsyncStorage.getItem("authData").then(user => {
       this.setState({ user: JSON.parse(user) });
-      alert("phone " + JSON.parse(user).phone);
+      this.setState({ phone: JSON.parse(user).phone }) ;
     });
 
-    // Apihelper.getProfileData()
-    //     .then(response => {
-    //         this.setState({
-    //             loading: false,
-    //             user: response.data
-    //         });
-    //     })
-    //     .catch(error => {
-    //         this.setState({
-    //             loading: false
-    //         });
-    //     });
+
   }
   render() {
     return (
@@ -72,8 +61,12 @@ class UserProfileScreen extends Component {
         />
         <View style={styles.body}>
           <View style={styles.bodyContent}>
-            <Text style={styles.name}>{JSON.stringify(this.state.user)}</Text>
-            <Text style={styles.phone}>Phone Number </Text>
+          <Text style={styles.phone}>Your Number </Text>
+          <Divider></Divider>
+          {/* <Text style={styles.name}>{JSON.parse(this.state.user).phone}</Text> */}
+          <Text style={styles.name}>{this.state.phone}</Text> 
+
+            
 
             {/* <Button style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Previous Orders
@@ -151,7 +144,18 @@ const styles = StyleSheet.create({
 });
    
 
-
+    // Apihelper.getProfileData()
+    //     .then(response => {
+    //         this.setState({
+    //             loading: false,
+    //             user: response.data
+    //         });
+    //     })
+    //     .catch(error => {
+    //         this.setState({
+    //             loading: false
+    //         });
+    //     });
 
 
 

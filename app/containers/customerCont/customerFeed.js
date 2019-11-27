@@ -11,7 +11,8 @@ import {
   ActivityIndicator,
   Colors,
   Divider,
-  TouchableRipple
+  TouchableRipple,
+  Snackbar
 } from "react-native-paper";
 import globalStyle from "../../global.style";
 import HeaderComponent from "../../components/header.component";
@@ -68,7 +69,8 @@ export default class ConsumerF extends Component {
       loading: true,
       loadingMore: false,
       error: null,
-      text: ""
+      text: "",
+      
     };
     this.getCartList();
   }
@@ -76,18 +78,20 @@ export default class ConsumerF extends Component {
   static navigationOptions = {};
 
   getCartList = () => {
-    ApiHelper.getCropList().then(res => {
+    ApiHelper.getPublishedProducts().then(res => {
       this.setState({
-        list: res.data.docs
+        list: res.data.data
       });
-      console.log("data ===== ", res.data.docs);
+      alert("data ===== " + JSON.stringify(res.data.data));
     });
   };
 
   keyExtractor = (item, index) => index.toString();
 
-  addToCart(item) {
-    let updateCart = this.state.cart || [];
+  addToCart(item, text) {
+    const list = state.list.push(item, text);
+    alert(list);
+    /* let updateCart = this.state.cart || [];
     updateCart.push(item);
     this.setState({ cart: updateCart });
     alert("add to cart" + JSON.stringify(this.state.cart));
@@ -95,7 +99,7 @@ export default class ConsumerF extends Component {
     dispatch.addToCart({
       type: ADD_TO_CART,
       payload: this.cart
-    });
+    }); */
   }
 
   render() {
@@ -107,12 +111,17 @@ export default class ConsumerF extends Component {
           renderItem={({ item, index }) => (
             <View style={styles.item}>
               <Card style={styles.card}>
-                <Card.Cover source={{ uri: item.image }} />
+                <Card.Cover
+                  source={{ uri: item.products.image }}
+                  style={{ height: 300, width: 300, alignSelf: "center" }}
+                />
                 <Card.Title
-                  title={item.hindi_name}
-                  subtitle={item.english_name}
+                  title={item.products.hindiName}
+                  subtitle={item.products.englishName}
                   right={props => (
-                    <Text style={{ marginRight: 25 }}>cost per uom</Text>
+                    <Text style={{ marginRight: 25 }}>
+                      {item.products.price}₹ per {item.products.units}
+                    </Text>
                   )}
                 />
                 <Card.Actions>
@@ -122,9 +131,9 @@ export default class ConsumerF extends Component {
                     uppercase={false}
                     labelStyle={{ color: "rgba(0, 0, 0, 0.87)" }}
                     color="#757575"
-                    font="Roboto"
+                    font="Roboto"   
                   >
-                    Farmer Name
+                    <Text>{item.partyName}</Text>
                   </Button>
                 </Card.Actions>
                 <Divider inset />
@@ -132,25 +141,37 @@ export default class ConsumerF extends Component {
                   <TextInput
                     style={{ width: 213, height: 56, marginRight: 60 }}
                     mode="outlined"
+
                     textAlignVertical="center"
+                    
                     label="Quantity"
-                    value={this.state.text}
+                    
                     onChangeText={text => {
-                      this.setState({ text });
-                      item.quantity = text;
+                      if (
+                        parseInt(text) <= item.products.quantity ||
+                        text == ""
+                      ) {
+                        this.setState({ text });
+                      } else {
+                        alert("invalid quantity");
+                        this.setState({ text: "" });
+                      }
                     }}
                     keyboardType={"numeric"}
                   />
                   <Text style={styles.text}>
-                    Remaining {"\n"}
-                    Inventory
+                    Remaining: {"\n"}
+                    {item.products.quantity}
                   </Text>
                 </Card.Actions>
                 <Card.Content>
-                  <Text style={styles.subtext}>Ordering in uom</Text>
+                  <Text style={styles.subtext}>{item.products.units}</Text>
                 </Card.Content>
                 <Card.Actions>
-                  <Button color="#6202EE" onPress={() => this.addToCart(item)}>
+                  <Button
+                    color="#6202EE"
+                    onPress={() => this.addToCart(item, text)}
+                  >
                     Add to cart
                   </Button>
                 </Card.Actions>

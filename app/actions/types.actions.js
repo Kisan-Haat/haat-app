@@ -19,7 +19,7 @@ export const checkoutRequest = request => ({
 
 export const addToCart = cartItem => ({
     type: ADD_TO_CART,
-    payload: cartItemd,
+    payload: cartItem,
 });
 
 export const removeFromCart = cartItem => ({

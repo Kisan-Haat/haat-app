@@ -83,6 +83,14 @@ export default class ConsumerC extends Component {
 
   static navigationOptions = {};
 
+  emptyCartCheck = () => {
+
+  }
+
+  removeCartItem = () => {
+    
+  }
+
   getCartList = () => {
     ApiHelper.getCropList().then(res => {
       this.setState({
@@ -97,7 +105,18 @@ export default class ConsumerC extends Component {
   keyExtractor = (item,index) => index.toString();
   render() {
     return (
+      
       <View>
+        
+        {/* if (1 > 2) {
+          (alert('Page here'))
+        } else {
+          <View>
+            <Text>Your Cart is Empty</Text>
+            <Divider></Divider>
+            <Text>Add items using the Feed</Text>
+          </View>
+        } */}
         <FAB
           style={styles.fab}
           icon="send"
@@ -152,7 +171,7 @@ export default class ConsumerC extends Component {
                   <Text style={styles.subtext}>Ordering in uom</Text>
                 </Card.Content>
                 <Card.Actions>
-                  <Button color="#6202EE">Remove</Button>
+                  <Button color="#6202EE" onPress={() => this.removeCartItem(item)}>Remove</Button>
                 </Card.Actions>
               </Card>
             </View>

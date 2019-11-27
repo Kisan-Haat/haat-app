@@ -21,7 +21,7 @@ import {
   TextInput
 } from "react-native-paper";
 import { Icon } from "native-base";
-
+import ApiHelper from '../../utils/api.helper'
 const units = ["kg", "mg", "liter", "ml", "gram", "unit"];
 
 export const ModalComp = props => {
@@ -35,6 +35,16 @@ export const ModalComp = props => {
     }
     return <Text>No data</Text>;
   };
+
+  
+
+  submit = () => {
+    let originalPoster = {
+      hindiName: this.state.hindiName,
+
+    }
+
+  }
 
   const styles = StyleSheet.create({
     container: {},
@@ -127,12 +137,7 @@ export const ModalComp = props => {
             <Chip onPress={() => console.log("Pressed")}>ml</Chip>
             <Chip onPress={() => console.log("Pressed")}>gram</Chip>
             <Chip onPress={() => console.log("Pressed")}>unit</Chip>
-            <Chip onPress={() => console.log("Pressed")}>kg</Chip>
-            <Chip onPress={() => console.log("Pressed")}>mg</Chip>
-            <Chip onPress={() => console.log("Pressed")}>liters</Chip>
-            <Chip onPress={() => console.log("Pressed")}>ml</Chip>
-            <Chip onPress={() => console.log("Pressed")}>gram</Chip>
-            <Chip onPress={() => console.log("Pressed")}>unit</Chip>
+            
             </ScrollView>
           </View>
           <TextInput
