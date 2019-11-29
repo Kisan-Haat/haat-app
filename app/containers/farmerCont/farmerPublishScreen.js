@@ -38,6 +38,13 @@ const styles = StyleSheet.create({
   },
   view: {
     paddingHorizontal: 12
+  },
+  textHeader: {
+    paddingTop: 20,
+    fontSize: 22,
+    color: "#000",
+    fontWeight: "300",
+    textAlign: "center"
   }
 });
 
@@ -86,6 +93,15 @@ export default class FarmerPS extends Component {
   }
   keyExtractor = (item, index) => index.toString();
   render() {
+    if (this.state.list.length == undefined || this.state.list.length < 1) {
+      return (
+        <View paddingTop={60}>
+          <ActivityIndicator size="large" color="#6202EE" />
+
+          <Text style={styles.textHeader}>Loading Catalog</Text>
+        </View>
+      );
+    } else {
     return (
       <View style={styles.view}>
         <ModalComp
@@ -118,6 +134,8 @@ export default class FarmerPS extends Component {
           keyExtractor={this.keyExtractor}
         />
       </View>
+    
     );
+    }
   }
 }

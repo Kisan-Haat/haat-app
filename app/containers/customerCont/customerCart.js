@@ -58,6 +58,13 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: "#6202EE"
+  },
+  textHeader: {
+    paddingTop: 20 ,
+    fontSize: 22,
+    color: "#000",
+    fontWeight: "300",
+    textAlign: "center"
   }
 });
 export default class ConsumerC extends Component {
@@ -66,7 +73,8 @@ export default class ConsumerC extends Component {
     page: 1,
     loading: true,
     loadingMore: false,
-    error: null
+    error: null,
+    isEmpty: true
   };
 
   _handleLoadMore = () => {};
@@ -103,7 +111,16 @@ export default class ConsumerC extends Component {
     text: ""
   };
   keyExtractor = (item,index) => index.toString();
+  
   render() {
+     if (this.state.list.length == undefined  || this.state.list.length < 1 ) {
+     return(
+          <View paddingTop={30}>
+            <Text style={styles.textHeader}>Your Cart is Empty</Text>
+            <Text style={styles.textHeader}>Add items using the Feed</Text>
+          </View>
+    );
+  } else {
     return (
       
       <View>
@@ -117,6 +134,7 @@ export default class ConsumerC extends Component {
             <Text>Add items using the Feed</Text>
           </View>
         } */}
+
         <FAB
           style={styles.fab}
           icon="send"
@@ -161,7 +179,7 @@ export default class ConsumerC extends Component {
                     value={this.state.text}
                     onChangeText={text => this.setState({ text })}
                     keyboardType={"numeric"}
-                  />
+                  />  
                   <Text style={styles.text}>
                     Remaining {"\n"}
                     Inventory
@@ -180,5 +198,7 @@ export default class ConsumerC extends Component {
         />
       </View>
     );
+  }
+    
   }
 }

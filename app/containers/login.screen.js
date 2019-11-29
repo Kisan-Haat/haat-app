@@ -21,14 +21,14 @@ export default class LoginScreen extends Component {
       phone: this.state.PHONE,
       password: this.state.PASSWORD
      }
-     alert(JSON.stringify('gate 1 pass',user)); //gate 1
+     //alert(JSON.stringify('gate 1 pass',user)); //gate 1
      ApiHelper.login(user)
          .then(res => {
-            alert('gate 2 pass') //gate 2
+            //alert('gate 2 pass') //gate 2
             if(res.status === 200){
             alert(JSON.stringify(res.data))
             if (res.data.hasOwnProperty('msg')) {
-                alert('gate 3 pass')
+                //alert('gate 3 pass')
                  Alert.alert('Error', res.data.msg);
              } else {
                  console.log("data ======> ", res.data)
@@ -42,7 +42,7 @@ export default class LoginScreen extends Component {
             }
          })
          .catch(error => {
-           alert('unautorized Access')
+           alert('Invalid Credentials')
              console.log(error);
              return;
          });

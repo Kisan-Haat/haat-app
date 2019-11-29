@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import dispatch from "react-redux";
-import { View, Text, ListView, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ListView,
+  FlatList,
+  StyleSheet
+  
+} from "react-native";
 import {
   Button,
   Card,
@@ -8,11 +15,11 @@ import {
   BottomNavigation,
   Title,
   Paragraph,
-  ActivityIndicator,
   Colors,
   Divider,
   TouchableRipple,
-  Snackbar
+  Snackbar,
+  ActivityIndicator
 } from "react-native-paper";
 import globalStyle from "../../global.style";
 import HeaderComponent from "../../components/header.component";
@@ -52,6 +59,13 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 14
+  },
+  textHeader: {
+    paddingTop: 20,
+    fontSize: 22,
+    color: "#000",
+    fontWeight: "300",
+    textAlign: "center"
   }
 });
 export default class ConsumerF extends Component {
@@ -69,8 +83,7 @@ export default class ConsumerF extends Component {
       loading: true,
       loadingMore: false,
       error: null,
-      text: "",
-      
+      text: ""
     };
     this.getCartList();
   }
@@ -103,84 +116,91 @@ export default class ConsumerF extends Component {
   }
 
   render() {
-    return (
-      <View>
-        <FlatList
-          contentContainerStyle={{ paddingBottom: 55 }}
-          data={this.state.list}
-          renderItem={({ item, index }) => (
-            <View style={styles.item}>
-              <Card style={styles.card}>
-                <Card.Cover
-                  source={{ uri: item.products.image }}
-                  style={{ height: 300, width: 300, alignSelf: "center" }}
-                />
-                <Card.Title
-                  title={item.products.hindiName}
-                  subtitle={item.products.englishName}
-                  right={props => (
-                    <Text style={{ marginRight: 25 }}>
-                      {item.products.price}₹ per {item.products.units}
-                    </Text>
-                  )}
-                />
-                <Card.Actions>
-                  <Button
-                    icon="account-box"
-                    style={{ size: 52 }}
-                    uppercase={false}
-                    labelStyle={{ color: "rgba(0, 0, 0, 0.87)" }}
-                    color="#757575"
-                    font="Roboto"   
-                  >
-                    <Text>{item.partyName}</Text>
-                  </Button>
-                </Card.Actions>
-                <Divider inset />
-                <Card.Actions>
-                  <TextInput
-                    style={{ width: 213, height: 56, marginRight: 60 }}
-                    mode="outlined"
+    if (this.state.list.length == undefined || this.state.list.length < 1) {
+      return (
+        <View paddingTop={60}>
+          <ActivityIndicator size="large" color="#6202EE" />
 
-                    textAlignVertical="center"
-                    
-                    label="Quantity"
-                    
-                    onChangeText={text => {
-                      if (
-                        parseInt(text) <= item.products.quantity ||
-                        text == ""
-                      ) {
-                        this.setState({ text });
-                      } else {
-                        alert("invalid quantity");
-                        this.setState({ text: "" });
-                      }
-                    }}
-                    keyboardType={"numeric"}
+          <Text style={styles.textHeader}>Loading Your Feed</Text>
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <FlatList
+            contentContainerStyle={{ paddingBottom: 55 }}
+            data={this.state.list}
+            renderItem={({ item, index }) => (
+              <View style={styles.item}>
+                <Card style={styles.card}>
+                  <Card.Cover
+                    source={{ uri: item.products.image }}
+                    style={{ height: 300, width: 300, alignSelf: "center" }}
                   />
-                  <Text style={styles.text}>
-                    Remaining: {"\n"}
-                    {item.products.quantity}
-                  </Text>
-                </Card.Actions>
-                <Card.Content>
-                  <Text style={styles.subtext}>{item.products.units}</Text>
-                </Card.Content>
-                <Card.Actions>
-                  <Button
-                    color="#6202EE"
-                    onPress={() => this.addToCart(item, text)}
-                  >
-                    Add to cart
-                  </Button>
-                </Card.Actions>
-              </Card>
-            </View>
-          )}
-          keyExtractor={this.keyExtractor}
-        />
-      </View>
-    );
+                  <Card.Title
+                    title={item.products.hindiName}
+                    subtitle={item.products.englishName}
+                    right={props => (
+                      <Text style={{ marginRight: 25 }}>
+                        {item.products.price}₹ per {item.products.units}
+                      </Text>
+                    )}
+                  />
+                  <Card.Actions>
+                    <Button
+                      icon="account-box"
+                      style={{ size: 52 }}
+                      uppercase={false}
+                      labelStyle={{ color: "rgba(0, 0, 0, 0.87)" }}
+                      color="#757575"
+                      font="Roboto"
+                    >
+                      <Text>{item.partyName}</Text>
+                    </Button>
+                  </Card.Actions>
+                  <Divider inset />
+                  <Card.Actions>
+                    <TextInput
+                      style={{ width: 213, height: 56, marginRight: 60 }}
+                      mode="outlined"
+                      textAlignVertical="center"
+                      label="Quantity"
+                      onChangeText={text => {
+                        if (
+                          parseInt(text) <= item.products.quantity ||
+                          text == ""
+                        ) {
+                          this.setState({ text });
+                        } else {
+                          alert("invalid quantity");
+                          this.setState({ text: "" });
+                        }
+                      }}
+                      keyboardType={"numeric"}
+                    />
+                    <Text style={styles.text}>
+                      Remaining: {"\n"}
+                      {item.products.quantity}
+                    </Text>
+                  </Card.Actions>
+                  <Card.Content>
+                    <Text style={styles.subtext}>{item.products.units}</Text>
+                  </Card.Content>
+                  <Card.Actions>
+                    <Button
+                      color="#6202EE"
+                      onPress={() => this.addToCart(item, this.text)}
+                    >
+                      Add to cart
+                    </Button>
+                  </Card.Actions>
+                </Card>
+              </View>
+            )}
+            keyExtractor={this.keyExtractor}
+          />
+        </View>
+      );
+    }
   }
 }

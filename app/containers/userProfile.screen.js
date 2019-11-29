@@ -66,7 +66,6 @@ class UserProfileScreen extends Component {
           {/* <Text style={styles.name}>{JSON.parse(this.state.user).phone}</Text> */}
           <Text style={styles.name}>{this.state.phone}</Text> 
 
-            
 
             {/* <Button style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Previous Orders
