@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import dispatch from "react-redux";
-import {
-  View,
-  Text,
-  ListView,
-  FlatList,
-  StyleSheet
-  
-} from "react-native";
+import { View, Text, ListView, FlatList, StyleSheet } from "react-native";
 import {
   Button,
   Card,
@@ -95,14 +88,15 @@ export default class ConsumerF extends Component {
       this.setState({
         list: res.data.data
       });
-      alert("data ===== " + JSON.stringify(res.data.data));
+
+      //alert("data ===== " + JSON.stringify(res.data.data));
     });
   };
 
   keyExtractor = (item, index) => index.toString();
 
   addToCart(item, text) {
-    const list = state.list.push(item, text);
+    list.push(item, text);
     alert(list);
     /* let updateCart = this.state.cart || [];
     updateCart.push(item);
@@ -112,7 +106,7 @@ export default class ConsumerF extends Component {
     dispatch.addToCart({
       type: ADD_TO_CART,
       payload: this.cart
-    }); */
+    });  */
   }
 
   render() {
@@ -120,7 +114,6 @@ export default class ConsumerF extends Component {
       return (
         <View paddingTop={60}>
           <ActivityIndicator size="large" color="#6202EE" />
-
           <Text style={styles.textHeader}>Loading Your Feed</Text>
         </View>
       );
@@ -173,10 +166,10 @@ export default class ConsumerF extends Component {
                           this.setState({ text });
                         } else {
                           alert("invalid quantity");
-                          this.setState({ text: "" });
+                          this.setState({ text: "" })
                         }
                       }}
-                      keyboardType={"numeric"}
+                      keyboardType={"number-pad"}
                     />
                     <Text style={styles.text}>
                       Remaining: {"\n"}
@@ -189,7 +182,7 @@ export default class ConsumerF extends Component {
                   <Card.Actions>
                     <Button
                       color="#6202EE"
-                      onPress={() => this.addToCart(item, this.text)}
+                      onPress={() => this.addToCart(item, text.toString())}
                     >
                       Add to cart
                     </Button>

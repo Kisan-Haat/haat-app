@@ -76,6 +76,8 @@ export default class LoginScreen extends Component {
                   style={globalstyle.txtInput}
                   value={this.state.PHONE}
                   onChangeText={text => this.setState({ PHONE: text })}
+                  
+                  keyboardType={'phone-pad'}
                 />
                 <TextInput
                   label={"Password"}
