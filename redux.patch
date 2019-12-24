@@ -1,0 +1,278 @@
+diff --git a/App.js b/App.js
+index c1ce732..cfe7c08 100644
+--- a/App.js
++++ b/App.js
+@@ -4,6 +4,7 @@ import { Provider as StoreProvider } from 'react-redux';
+ import store from './app/store';
+ import AppContainer from './app/global.navigation';
+ import { SafeAreaView } from 'react-native';
++import {persistStore} from 'redux-persist';
+ 
+ 
+ const theme = {
+diff --git a/app/actions/types.actions.js b/app/actions/types.actions.js
+index 4c6a4ec..a3343ae 100644
+--- a/app/actions/types.actions.js
++++ b/app/actions/types.actions.js
+@@ -3,4 +3,21 @@ The purpose of this file to have all the action types as constant so that there
+ Note: This is a action types file.
+ Please remove it when developing a new app.
+ */
+-export const ADD_TEST = 'ADD_TEST';
+\ No newline at end of file
++export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
++export const ADD_TO_CART = 'ADD_TO_CART';
++export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
++export const ADD_ORDER = 'ADD_ORDER';
++export const EMPTY_CART = 'EMPTY_CART';
++export const USER_PROFILE = 'SAVE_USER';
++
++import axiosObj from '../utils/api.helper';
++
++export const getUser = user => ({
++    type: 'GET_USER',
++    payload: axiosObj.post('/user/login', user),
++});
++
++export const getToken = token => ({
++    type: 'GET_TOKEN',
++    payload: token,
++});
+\ No newline at end of file
+diff --git a/app/containers/consumerTabContainer.js b/app/containers/consumerTabContainer.js
+index 51d922c..3b47ddb 100644
+--- a/app/containers/consumerTabContainer.js
++++ b/app/containers/consumerTabContainer.js
+@@ -57,7 +57,11 @@ export default class ConsumerTabs extends Component {
+                   name="shopping"
+                 />
+                 <Text
+-                  style={{ textAlignVertical: "center", textAlign: "center" }}
++                  style={{
++                    textAlignVertical: "center",
++                    textAlign: "center",
++                    marginLeft: 5
++                  }}
+                 >
+                   Feed
+                 </Text>
+@@ -74,11 +78,19 @@ export default class ConsumerTabs extends Component {
+                   type="MaterialCommunityIcons"
+                   name="cart"
+                 />
+-                <Text>Cart</Text>
++                <Text
++                  style={{
++                    textAlignVertical: "center",
++                    textAlign: "center",
++                    marginLeft: 5
++                  }}
++                >
++                  Cart
++                </Text>
+               </TabHeading>
+             }
+           >
+-          <ConsumerC />  
++            <ConsumerC />
+           </Tab>
+           <Tab
+             heading={
+@@ -88,7 +100,15 @@ export default class ConsumerTabs extends Component {
+                   type="MaterialIcons"
+                   name="local-shipping"
+                 />
+-                <Text>Orders</Text>
++                <Text
++                  style={{
++                    textAlignVertical: "center",
++                    textAlign: "center",
++                    marginLeft: 5
++                  }}
++                >
++                  Orders
++                </Text>
+               </TabHeading>
+             }
+           >
+diff --git a/app/containers/customerCont/customerCart.js b/app/containers/customerCont/customerCart.js
+index 9d75975..52eb775 100644
+--- a/app/containers/customerCont/customerCart.js
++++ b/app/containers/customerCont/customerCart.js
+@@ -133,6 +133,9 @@ export default class ConsumerC extends Component {
+                 <Card.Actions>
+                   <TextInput
+                     style={{ width: 213, height: 56, marginRight: 60 }}
++                    selectionColor="#757575"
++                    underlineColor="#757575"
++                    
+                     mode="outlined"
+                     textAlignVertical="center"
+                     label="Quantity"
+diff --git a/app/containers/login.screen.js b/app/containers/login.screen.js
+index 9422489..afceee1 100644
+--- a/app/containers/login.screen.js
++++ b/app/containers/login.screen.js
+@@ -1,11 +1,17 @@
+ import React, { Component } from 'react';
+ import { View, StyleSheet, Image, AsyncStorage, Alert, SafeAreaView } from 'react-native';
+ import { Card, TextInput, Button } from 'react-native-paper';
++import { connect } from 'react-redux';
++
++import { getToken } from '../actions/types.actions';
+ import globalstyle from '../global.style';
+ import ApiHelper from '../utils/api.helper';
+ import I18n from '../utils/I18n';
+ 
+-export default class LoginScreen extends Component {
++//To do
++//Move Login token from Async to Redux Persist
++
++class LoginScreen extends Component {
+ 
+     constructor(props) {
+         super(props);
+@@ -16,18 +22,21 @@ export default class LoginScreen extends Component {
+     }
+ 
+     login = () => {
++        const { getTokenAction } = this.props;
+         let user = {
+             username: this.state.USERNAME,
+             password: this.state.PASSWORD
+         }
+-        alert(JSON.stringify(user));
++
++        getTokenAction(formData);
++        // alert(JSON.stringify(user));
+         ApiHelper.login(user)
+             .then(res => {
+                 alert(JSON.stringify(res.data))
+                 if (res.data.hasOwnProperty('msg')) {
+                     Alert.alert('Error', res.data.msg);
+                 } else {
+-                    AsyncStorage.setItem("authToken", res.data.token);
++                    // AsyncStorage.setItem("authToken", res.data.token);
+                     this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
+                 }
+             })
+@@ -67,6 +76,24 @@ export default class LoginScreen extends Component {
+         );
+     }
+ }
++
++const mapStateToProps = (state) => {
++    console.log(state);
++};
++
++const mapDispatchToProps = (dispatch, ownProps) => {
++    return {
++      getTokenAction: (formData) => {
++        dispatch(getToken(formData))
++      }
++    }
++  }
++
++const LoginWrapper = connect(
++    mapStateToProps,
++    mapDispatchToProps,
++)(LoginScreen);
++
+ const styles = StyleSheet.create({
+     Image: {
+         marginTop: '10%',
+diff --git a/app/reducers/root.reducer.js b/app/reducers/root.reducer.js
+index 7f4cc90..64c70ee 100644
+--- a/app/reducers/root.reducer.js
++++ b/app/reducers/root.reducer.js
+@@ -1,6 +1,9 @@
+ import {combineReducers} from 'redux';
+-import sample from './sample.reducer';
++
++import { loginReducer } from './login.reducer';
++
++
+ 
+ export default combineReducers({
+-    sample
+-})
+\ No newline at end of file
++    loginReducer,
++});
+\ No newline at end of file
+diff --git a/app/reducers/sample.reducer.js b/app/reducers/sample.reducer.js
+deleted file mode 100644
+index aa29d50..0000000
+--- a/app/reducers/sample.reducer.js
++++ /dev/null
+@@ -1,16 +0,0 @@
+-/*
+-Note: This is a sample reducer.
+-Please remove it when developing a new app.
+-*/
+-
+-export default sample = (state = [], action) => {
+-    switch (action.type){
+-        case 'ADD_TODO':
+-            return [ ...state, {
+-                id: action.id,
+-                text: action.text,
+-            }];
+-        default:
+-            return state;
+-    }
+-}
+\ No newline at end of file
+diff --git a/app/store.js b/app/store.js
+index a57cca8..c922ac2 100644
+--- a/app/store.js
++++ b/app/store.js
+@@ -1,4 +1,7 @@
+-import {createStore} from "redux";
+-import rootReducer from './reducers/root.reducer';
++import {createStore, compose} from "redux";
++
++// import {autoRehydrate} from 'redux-persist';
++
++import {rootReducer} from './reducers/root.reducer';
+ 
+ export default createStore(rootReducer);
+\ No newline at end of file
+diff --git a/app/utils/api.helper.js b/app/utils/api.helper.js
+index f2f8ca9..a2b2e19 100644
+--- a/app/utils/api.helper.js
++++ b/app/utils/api.helper.js
+@@ -43,4 +43,4 @@ const apiHelper = {
+     }
+ }
+ 
+-export default apiHelper;
+\ No newline at end of file
++export default axiosObj;
+\ No newline at end of file
+diff --git a/index.js b/index.js
+index 3ac6652..8ca351f 100644
+--- a/index.js
++++ b/index.js
+@@ -6,5 +6,6 @@
+ import {AppRegistry} from 'react-native';
+ import App from './App';
+ import {name as appName} from './app.json';
++import store from 'store';
+ 
+ AppRegistry.registerComponent(appName, () => App);
+diff --git a/package.json b/package.json
+index f37c071..ba9ff7e 100644
+--- a/package.json
++++ b/package.json
+@@ -21,7 +21,9 @@
+     "react-native-vector-icons": "^6.6.0",
+     "react-navigation": "^3.5.1",
+     "react-redux": "^6.0.1",
+-    "redux": "^4.0.1"
++    "redux": "^4.0.4",
++    "redux-persist": "^6.0.0",
++    "redux-thunk": "^2.3.0"
+   },
+   "devDependencies": {
+     "babel-core": "^7.0.0-bridge.0",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image, AsyncStorage, Alert, SafeAreaView } from 'react-native';
-import { Card, TextInput, Button } from 'react-native-paper';
+import { Card, TextInput, Button, Divider, Text } from 'react-native-paper';
+
 import globalstyle from '../global.style';
 import ApiHelper from '../utils/api.helper';
 import I18n from '../utils/I18n';
@@ -10,54 +11,76 @@ export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            phone: '',
             password: '',
         };
     }
 
-    login = () => {
-        let user = {
-            USERNAME: this.state.USERNAME,
-            PASSWORD: this.state.PASSWORD
+ login = () => {
+     let user = {
+      phone: this.state.PHONE,
+      password: this.state.PASSWORD
+     }
+     //alert(JSON.stringify('gate 1 pass',user)); //gate 1
+     ApiHelper.login(user)
+         .then(res => {
+            //alert('gate 2 pass') //gate 2
+            if(res.status === 200){
+            alert(JSON.stringify(res.data))
+            if (res.data.hasOwnProperty('msg')) {
+                //alert('gate 3 pass')
+                 Alert.alert('Error', res.data.msg);
+             } else {
+                 console.log("data ======> ", res.data)
+                 AsyncStorage.setItem("authToken", res.data.token);
+                 AsyncStorage.setItem("authData", JSON.stringify(res.data)).then(data => alert(data));
+                 this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
+             }
+            }
+            else{
+                alert(JSON.stringify(res.data))
+            }
+         })
+         .catch(error => {
+           alert('Invalid Credentials')
+             console.log(error);
+             return;
+         });
         }
-        ApiHelper.login(user)
-            .then(res => {
-                if (res.data.hasOwnProperty('_ERROR_MESSAGE_')) {
-                    Alert.alert('Error', res.data._ERROR_MESSAGE_);
-                } else {
-                    AsyncStorage.setItem("authToken", res.data.token);
-                    this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
 
     render() {
+        const {navigate} = this.props.navigation;
         return (
             <SafeAreaView>
                 <View style={globalstyle.padded}>
-                    <Card>
+                <Image
+                                source={require('../assets/images/hc.png')}
+                                style={styles.Image}
+                            />
+                    <Card style={styles.bottom}>
                         <Card.Content>
+                            
                             <TextInput
-                                label={I18n.t("username")}
+                                label={"Phone"}
                                 style={globalstyle.txtInput}
-                                value={this.state.USERNAME}
-                                onChangeText={(text) => this.setState({ USERNAME: text })}
+                                value={this.state.PHONE}
+                                onChangeText={(text) => this.setState({ PHONE: text })}
+                                keyboardType={"numeric"}
                             />
                             <TextInput
-                                label={I18n.t("password")}
+                                label={"Password"}
                                 secureTextEntry={true}
                                 style={globalstyle.txtInput}
                                 value={this.state.PASSWORD}
                                 onChangeText={(text) => this.setState({ PASSWORD: text })}
                             />
-                            <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{I18n.t("login")}</Button>
-                            <Image
-                                source={require('../assets/images/hc.png')}
-                                style={styles.Image}
-                            />
+                            <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{"login"}</Button>
+                            
+                            <Button mode='outlined' onPress={() => navigate('SignUp')} style={{ marginTop: '5%'}}>{"Register"}</Button>
+                    
+                            {/* <Button mode='contained' onPress={() => this.login()} style={styles.Button}>Sign Up</Button>  */}
+
+                            
                         </Card.Content>
                     </Card>
                 </View>
@@ -66,12 +89,21 @@ export default class LoginScreen extends Component {
     }
 }
 const styles = StyleSheet.create({
+    Card: {
+        flex: 1,
+        alignItems: 'center'
+    },
     Image: {
         marginTop: '10%',
         width: '100%',
         height: '30%'
     },
     Button: {
-        marginTop: '5%'
+        marginTop: '10%'
     },
+    bottom: {
+        
+        justifyContent: 'flex-end',
+        marginBottom: 36
+    }
 });

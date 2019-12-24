@@ -1,14 +1,15 @@
 import { DefaultTheme } from 'react-native-paper';
 const colors = {
-    primary: '#0477BF',
-    secondary: '',
+    primary: '#000000',
+    secondary: '#6202EE',
     light: '#CCC',
     dark: '',
     danger: '#B00020'
 }
 export default {
     padded: {
-        padding: 8
+        padding: 8,
+        
     },
     flRow: {
         flexDirection: 'row',
@@ -17,11 +18,11 @@ export default {
         flexDirection: 'column',
     },
     txtInput: {
-        backgroundColor: DefaultTheme.colors.surface
+        backgroundColor: DefaultTheme.colors.light
     },
     button: {
-        width: '40%',
-        borderColor: colors.primary,
+        
+        color: colors.secondary,
     },
     fabLong: {
         margin: 16,
@@ -33,7 +34,7 @@ export default {
     },
     backgroundColor: {
         flex: 1,
-        backgroundColor: '#f5f5f6'
+        backgroundColor: '#f5f5f5'
     },
     bold: {
         fontWeight: 'bold'

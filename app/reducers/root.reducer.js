@@ -1,6 +1,10 @@
-import {combineReducers} from 'redux';
-import sample from './sample.reducer';
+import { combineReducers } from 'redux';
+import user from './userReducer';
+import userToken from './tokenReducer'
+import cart from './cart.reducer';
 
 export default combineReducers({
-    sample
-})
+  user,
+  userToken,
+  cart,
+});

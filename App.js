@@ -10,13 +10,14 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#0477bf'
+    primary: '#6202EE',
+    secondary: '#FFF'
   }
 }
 export default class App extends Component {
   render() {
     return (
-        <StoreProvider store={store}>
+         <StoreProvider store={store}>
           <PaperProvider theme={theme}>
             <AppContainer />
           </PaperProvider>
