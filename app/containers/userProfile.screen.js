@@ -5,22 +5,16 @@ import {
   StyleSheet,
   Text
 } from "react-native";
-import { Icon, Divider } from "react-native-paper";
+import { Avatar, Button, Card, Title, Paragraph, withTheme } from 'react-native-paper';
 import HeaderComponent from "../components/header.component";
 import Apihelper from "../utils/api.helper";
-import {
-  withTheme,
-  Button
-} from "react-native-paper";
 import { Container } from "native-base";
 
 class UserProfileScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
-      name: "",
-      phone: ""
+      user: {},
     };
   }
   _logout = () => {
@@ -31,10 +25,8 @@ class UserProfileScreen extends Component {
   componentDidMount() {
     AsyncStorage.getItem("authData").then(user => {
       this.setState({ user: JSON.parse(user) });
-      this.setState({ phone: JSON.parse(user).phone }) ;
+      console.log(JSON.parse(user))
     });
-
-
   }
   render() {
     return (
@@ -43,17 +35,20 @@ class UserProfileScreen extends Component {
           style={{ shadowColor: "transparent", elevation: 6  }}
           title="Profile"
         />
-
-        <View >
-          <Text style={styles.phone}>Your Number </Text>
-          <Divider></Divider>
-          <Text style={styles.name}>{this.state.phone}</Text> 
-          <Button
-            mode="contained"
-            onPress={this._logout}
-          >
+        <Card style={{margin: 8}}>
+        <Card.Title title= {this.state.user.partyName} subtitle={this.state.user.role} left={(props) => <Avatar.Icon {...props} icon="folder" />} />
+        <Card.Content> 
+          <Text>Id: {this.state.user.partyId}</Text> 
+          <Text>Phone: {this.state.user.phone}</Text>
+        </Card.Content>
+        {/* <Card.Cover source={{ uri: 'https://picsum.photos/700' }} /> */}
+        <Card.Actions>
+          <Button mode="contained" onPress={this._logout}>
             logout
           </Button>
+        </Card.Actions>
+      </Card>
+        <View >
         </View>
       </Container>
     );

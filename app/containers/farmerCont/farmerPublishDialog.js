@@ -10,7 +10,6 @@ const PublisherModal = props => (
     <View>
       <Image source={props.image} style={styles.image} />
       <Text style={styles.text}>{props.data}</Text>
-      <Text>Is this modal popsUp on catalog screen</Text>
     </View>
   </Modal>
 );
