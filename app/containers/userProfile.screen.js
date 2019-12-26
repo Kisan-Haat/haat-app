@@ -3,25 +3,15 @@ import {
   View,
   AsyncStorage,
   StyleSheet,
-  Platform,
-  Text,
-  Image,
-  TouchableOpacity,
-  Str
+  Text
 } from "react-native";
 import { Icon, Divider } from "react-native-paper";
 import HeaderComponent from "../components/header.component";
 import Apihelper from "../utils/api.helper";
 import {
-  ActivityIndicator,
   withTheme,
-  Card,
-  Avatar,
-  List,
   Button
 } from "react-native-paper";
-import colors from "../config/theme";
-import I18n from "../utils/I18n";
 import { Container } from "native-base";
 
 class UserProfileScreen extends Component {
@@ -50,31 +40,16 @@ class UserProfileScreen extends Component {
     return (
       <Container>
         <HeaderComponent
-          style={{ shadowColor: "transparent", elevation: 6 }}
+          style={{ shadowColor: "transparent", elevation: 6  }}
           title="Profile"
         />
 
-        <View style={styles.header}></View>
-        <Image
-          style={styles.avatar}
-          source={require("../assets/images/account-circle.png")}
-        />
-        <View style={styles.body}>
-          <View style={styles.bodyContent}>
+        <View >
           <Text style={styles.phone}>Your Number </Text>
           <Divider></Divider>
-          {/* <Text style={styles.name}>{JSON.parse(this.state.user).phone}</Text> */}
           <Text style={styles.name}>{this.state.phone}</Text> 
-
-
-            {/* <Button style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Previous Orders
-              </Text>
-            </Button> */}
-          </View>
           <Button
             mode="contained"
-            style={{ marginTop: 400, marginLeft:10, marginRight:10 }}
             onPress={this._logout}
           >
             logout
@@ -88,21 +63,20 @@ export default withTheme(UserProfileScreen);
 
 const styles = StyleSheet.create({
   header: {
+    padding: 10,
     backgroundColor: "#6202EE",
-    height: 100
+    height: 60
   },
   avatar: {
+    margin: 0,
     width: 56,
     height: 56,
-
-    marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
-    marginTop: 80
   },
 
   body: {
-    marginTop: 40
+    marginTop: '50%'
   },
   bodyContent: {
     flex: 1,
@@ -128,108 +102,6 @@ const styles = StyleSheet.create({
     color: "#696969",
     marginTop: 10,
     textAlign: "center"
-  },
-  
-  buttonContainer: {
-    marginTop: 80,
-    height: 50,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 300,
-
-    backgroundColor: "#6202EE"
   }
 });
    
-
-    // Apihelper.getProfileData()
-    //     .then(response => {
-    //         this.setState({
-    //             loading: false,
-    //             user: response.data
-    //         });
-    //     })
-    //     .catch(error => {
-    //         this.setState({
-    //             loading: false
-    //         });
-    //     });
-
-
-
-/* const styles = StyleSheet.create(
-    {
-        MainContainer:
-        {
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0
-        },
-     
-        bottomView:{
-     
-          width: '100%', 
-          height: 50, 
-          justifyContent: 'center', 
-          alignItems: 'center',
-          position: 'absolute',
-          bottom: 0
-        },
-     
-        textStyle:{
-     
-          color: '#fff',
-          fontSize:22
-        }
-    });
- */
-
-
-    {/*   <Card>
-                                    <Card.Content style={[globalStyle.flRow, { justifyContent: 'center' }]}>
-                                        <Avatar.Icon size={80} icon="person" />
-                                    </Card.Content>
-                                    <Card.Content>
-                                        <List.Section>
-                                            <List.Subheader>{I18n.t("userProfile")}</List.Subheader>
-                    <Text>{JSON.stringify(user)}</Text>
-                                            <List.Item
-                                                title={user.phone}
-                                                left={() => <List.Icon icon="person" />}
-                                            />
-                                            <List.Item
-                                                title={user.id}
-                                                left={() => <List.Icon icon="email" />}
-                                            />
-                                            {
-                                                (user.address)
-                                                    ? <View>
-                                                        <List.Item
-                                                            title={user.address.address1}
-                                                            description={<Text>{user.address.city}</Text>}
-                                                            left={() => <List.Icon icon="location-city" />}
-                                                        />
-                                                        <List.Item
-                                                            title={user.address.postalCode}
-                                                            left={() => <List.Icon icon="my-location" />}
-                                                        />
-                                                        <List.Item
-                                                            title="Asia/Calcutta"
-                                                            left={() => <List.Icon icon="watch-later" />}
-                                                        /></View> : null
-                                            }
-                                        </List.Section>
-                                    </Card.Content>
-                                </Card> */}
-                                {/* <View>
-            <HeaderComponent title="Profile" />
-                <View style={styles.MainContainer}>
-                    
-                </View>
-                <View style={styles.bottomView}>
-                         <Button mode="contained" onPress={this._logout}>{I18n.t("logout")}</Button>
-              
-                    </View>
-        </View> */}
