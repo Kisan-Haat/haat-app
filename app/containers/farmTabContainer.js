@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Dimensions, View} from 'react-native'
 import { Container, Header, Content, Tab, Tabs, title, TabHeading, Icon, Text, Label,} from 'native-base';
 import {StyleSheet} from 'react-native'
-import FarmerPS from './farmerCont/farmerPublishScreen';
+import FarmerPS from './farmerCont/farmerCatalog';
 import FarmerPL from './farmerCont/farmerPublishedList';
 import FarmerO from './farmerCont/farmerOrders';
 import HeaderComponent from '../components/header.component';

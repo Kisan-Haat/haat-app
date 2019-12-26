@@ -2,26 +2,18 @@ import React, { Component } from "react";
 import {
   Modal,
   Text,
-  TouchableHighlight,
   View,
-  Alert,
   StyleSheet,
   Image,
   ScrollView,
-  LinearGradient
+  SafeAreaView
 } from "react-native";
 import {
-  Button,
   Appbar,
-  Card,
   Title,
-  Paragraph,
-  Divider,
   Chip,
   TextInput
 } from "react-native-paper";
-import { Icon } from "native-base";
-import ApiHelper from '../../utils/api.helper'
 const units = ["kg", "mg", "liter", "ml", "gram", "unit"];
 
 export const ModalComp = props => {
@@ -36,8 +28,6 @@ export const ModalComp = props => {
     return <Text>No data</Text>;
   };
 
-  
-
   submit = () => {
     let originalPoster = {
       hindiName: this.state.hindiName,
@@ -47,7 +37,9 @@ export const ModalComp = props => {
   }
 
   const styles = StyleSheet.create({
-    container: {},
+    container: {
+
+    },
     ActionBar: {
       //flex: 3,
       elevation: 4,
@@ -74,7 +66,6 @@ export const ModalComp = props => {
     }
   });
   return (
-    <View style={styles.container}>
       <Modal
         animationType="slide"
         transparent={false}
@@ -82,6 +73,7 @@ export const ModalComp = props => {
         onRequestClose={props.close}
       >
         {/* Top Control Bar */}
+        <SafeAreaView>
         <Appbar>
           <Appbar.Action
             style={(marginLeft = 0)}
@@ -89,9 +81,7 @@ export const ModalComp = props => {
             style={styles.icon}
             onPress={props.close}
           />
-          <Appbar.Header>
-            <Title titleStyle={{ fontSize: 20, color: "#FFF" }}>List Product</Title>
-          </Appbar.Header>
+          <Title>List Product</Title>
           
           <Appbar.Content
             titleStyle={{ textAlign: "right", color: "#FFF", fontSize: 14}}
@@ -119,6 +109,7 @@ export const ModalComp = props => {
             keyboardType={'numeric'}
           />
           <Text style={styles.Text}>Enter how much stock you have</Text>
+          <Text>Is this modal popsUp on catalog fgegferygf screen</Text>
           <View
             style={{
               marginLeft: 16,
@@ -150,7 +141,7 @@ export const ModalComp = props => {
             Enter the price the customer will pay per unit
           </Text>
         </View>
+        </SafeAreaView>
       </Modal>
-    </View>
   );
 };
