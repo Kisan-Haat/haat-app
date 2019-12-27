@@ -12,14 +12,10 @@ import ConsumerTabs from './containers/consumerTabContainer'
 
 
 const AuthNavigator  = createStackNavigator({
-       
+
     LoginIn:{
         screen: Login
-    },
-    SignUp:{
-        screen: SignUpScreen
-    },
-
+    }
 })
 
 const MenuDrawerNavigator = createDrawerNavigator({
@@ -30,7 +26,7 @@ const MenuDrawerNavigator = createDrawerNavigator({
         },
         screen: ConsumerTabs
     },
-    Test:{
+    FarmerTabs :{
         navigationOptions:{
             drawerLabel: "Sell"
         },

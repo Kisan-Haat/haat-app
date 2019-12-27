@@ -70,13 +70,7 @@ export default class LoginScreen extends Component {
                                 value={this.state.PASSWORD}
                                 onChangeText={(text) => this.setState({ PASSWORD: text })}
                             />
-                            <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{"login"}</Button>
-                            
-                            {/* <Button mode='outlined' onPress={() => navigate('SignUp')} style={{ marginTop: '5%'}}>{"Register"}</Button> */}
-                    
-                            {/* <Button mode='contained' onPress={() => this.login()} style={styles.Button}>Sign Up</Button>  */}
-
-                            
+                            <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{"login"}</Button>                            
                         </Card.Content>
                     </Card>
                 </View>
