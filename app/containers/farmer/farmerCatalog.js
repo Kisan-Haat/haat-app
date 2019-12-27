@@ -9,13 +9,8 @@ import {
   ActivityIndicator,
   Modal
 } from "react-native-paper";
-//import globalStyle from '../../global.style';
-import HeaderComponent from "../../components/header.component";
-import Currency from "../../components/currency.component";
 import ApiHelper from "../../utils/api.helper";
-import colors from "../../config/theme";
-//import PublisherModal from './farmerPublishDialog'
-import { ModalComp } from "../Modal/PublishCropModal";
+import { PublishModal } from "../Modal/PublishCropModal";
 
 const styles = StyleSheet.create({
   item: {
@@ -48,7 +43,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class FarmerPS extends Component {
+export default class Catalog extends Component {
   _handleLoadMore = () => {};
 
   triggerModal = item => {
@@ -104,14 +99,13 @@ export default class FarmerPS extends Component {
     } else {
     return (
       <View style={styles.view}>
-        <ModalComp
+        <PublishModal
           modalVisible={this.state.showModal}
           close={() => {
             this.closeModal();
           }}
           currentItem={this.state.currentItem}
         />
-        <Text> first screen for farmer</Text>
         <FlatList
           numColumns={2}
           contentContainerStyle={{ paddingBottom: "4%" }}

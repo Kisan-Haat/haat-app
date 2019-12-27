@@ -11,9 +11,9 @@ import {
   Icon,
   Row
 } from "native-base";
-import ConsumerF from "./customerCont/customerFeed";
-import ConsumerC from "./customerCont/customerCart";
-import ConsumerO from "./customerCont/customerOrder";
+import Feeds from "./customer/customerFeed";
+import Cart from "./customer/customerCart";
+import Orders from "./customer/customerOrder";
 import HeaderComponent from "../components/header.component";
 
 const styles = StyleSheet.create({
@@ -68,7 +68,7 @@ export default class ConsumerTabs extends Component {
               </TabHeading>
             }
           >
-            <ConsumerF />
+            <Feeds />
           </Tab>
           <Tab
             heading={
@@ -90,7 +90,7 @@ export default class ConsumerTabs extends Component {
               </TabHeading>
             }
           >
-            <ConsumerC />
+            <Cart />
           </Tab>
           <Tab
             heading={
@@ -113,7 +113,7 @@ export default class ConsumerTabs extends Component {
             }
           >
             <View style={styles.container}>
-              <ConsumerO />
+              <Orders />
             </View>
           </Tab>
         </Tabs>

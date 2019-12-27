@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
-export default class ConsumerF extends Component {
+export default class Feeds extends Component {
   _handleLoadMore = () => {};
 
   constructor(props) {

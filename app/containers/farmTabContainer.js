@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Dimensions, View} from 'react-native'
 import { Container, Header, Content, Tab, Tabs, title, TabHeading, Icon, Text, Label,} from 'native-base';
 import {StyleSheet} from 'react-native'
-import FarmerPS from './farmerCont/farmerCatalog';
-import FarmerPL from './farmerCont/farmerPublishedList';
-import FarmerO from './farmerCont/farmerOrders';
+import Catalog from './farmer/farmerCatalog';
+import PublishedList from './farmer/farmerPublishedList';
+import Orders from './farmer/farmerOrders';
 import HeaderComponent from '../components/header.component';
 
 const styles = StyleSheet.create ({
@@ -63,7 +63,7 @@ export default class FarmerTabs extends Component {
             }
           >
            <View> 
-            <FarmerPS />
+            <Catalog />
            </View> 
             
           </Tab>
@@ -80,7 +80,7 @@ export default class FarmerTabs extends Component {
             }
           >
             <View style={styles.container}>
-              <FarmerPL />
+              <PublishedList />
             </View>
            
           </Tab>
@@ -97,7 +97,7 @@ export default class FarmerTabs extends Component {
             }
           >
             <View style={styles.container}>
-            <FarmerO />
+            <Orders />
             </View>
           </Tab>
         </Tabs>

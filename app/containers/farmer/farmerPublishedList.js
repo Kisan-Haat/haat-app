@@ -15,7 +15,7 @@ import {
 } from "react-native";
 
 
-export default FarmerPL = () => (
+export default PublishedList = () => (
   <Card>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
     <Card.Title

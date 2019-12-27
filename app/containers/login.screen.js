@@ -24,14 +24,10 @@ export default class LoginScreen extends Component {
      //alert(JSON.stringify('gate 1 pass',user)); //gate 1
      ApiHelper.login(user)
          .then(res => {
-            //alert('gate 2 pass') //gate 2
             if(res.status === 200){
-            alert(JSON.stringify(res.data))
             if (res.data.hasOwnProperty('msg')) {
-                //alert('gate 3 pass')
                  Alert.alert('Error', res.data.msg);
              } else {
-                 console.log("data ======> ", res.data)
                  AsyncStorage.setItem("authToken", res.data.token);
                  AsyncStorage.setItem("authData", JSON.stringify(res.data)).then(data => alert(data));
                  this.props.navigation.navigate(res.data.token ? 'App' : 'Auth');
@@ -76,7 +72,7 @@ export default class LoginScreen extends Component {
                             />
                             <Button mode='contained' onPress={() => this.login()} style={styles.Button}>{"login"}</Button>
                             
-                            <Button mode='outlined' onPress={() => navigate('SignUp')} style={{ marginTop: '5%'}}>{"Register"}</Button>
+                            {/* <Button mode='outlined' onPress={() => navigate('SignUp')} style={{ marginTop: '5%'}}>{"Register"}</Button> */}
                     
                             {/* <Button mode='contained' onPress={() => this.login()} style={styles.Button}>Sign Up</Button>  */}
 

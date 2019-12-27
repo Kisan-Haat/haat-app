@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Button, Card, Title, Paragraph, Divider, Text, Icon, StyleSheet, View, Headline } from 'react-native-paper';
 
 
-FarmerO = () => (
-  
+export default Orders = () => (
   <Card>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
     <Card.Title
@@ -30,4 +29,3 @@ FarmerO = () => (
     </Card.Actions>
   </Card>
 );
-export default FarmerO;

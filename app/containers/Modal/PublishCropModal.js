@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Modal,
   Text,
@@ -7,16 +7,16 @@ import {
   Image,
   ScrollView,
   SafeAreaView
-} from "react-native";
+} from 'react-native';
 import {
   Appbar,
   Title,
   Chip,
   TextInput
-} from "react-native-paper";
+} from 'react-native-paper';
 const units = ["kg", "mg", "liter", "ml", "gram", "unit"];
 
-export const ModalComp = props => {
+export const PublishModal = props => {
   const NH_data = () => {
     if (Object.keys(props.currentItem)) {
       return (
@@ -107,7 +107,6 @@ export const ModalComp = props => {
             keyboardType={'numeric'}
           />
           <Text style={styles.Text}>Enter how much stock you have</Text>
-          <Text>Is this modal popsUp on catalog fgegferygf screen</Text>
           <View
             style={{
               marginLeft: 16,

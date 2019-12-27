@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
-export default class ConsumerC extends Component {
+export default class Cart extends Component {
   state = {
     data: [],
     page: 1,
