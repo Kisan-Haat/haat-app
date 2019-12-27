@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, AsyncStorage, Alert, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Image, Alert, SafeAreaView } from 'react-native';
 import { Card, TextInput, Button, Divider, Text } from 'react-native-paper';
-
+import AsyncStorage from '@react-native-community/async-storage';
 import globalstyle from '../global.style';
 import ApiHelper from '../utils/api.helper';
 import I18n from '../utils/I18n';

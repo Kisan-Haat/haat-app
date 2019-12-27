@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {
   View,
-  AsyncStorage,
   StyleSheet,
   Text
 } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 import { Avatar, Button, Card, Title, Paragraph, withTheme } from 'react-native-paper';
 import HeaderComponent from "../components/header.component";
 import Apihelper from "../utils/api.helper";

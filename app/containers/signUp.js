@@ -3,11 +3,11 @@ import {
   View,
   StyleSheet,
   Image,
-  AsyncStorage,
   Alert,
   SafeAreaView,
   KeyboardAvoidingView
 } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 import {
   Card,
   TextInput,

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {
     ActivityIndicator,
-    AsyncStorage,
     StatusBar,
     View
 } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 import SplashScreen from 'react-native-splash-screen'
 
 export default class AuthLoadingScreen extends Component {
