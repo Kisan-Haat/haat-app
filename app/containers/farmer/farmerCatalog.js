@@ -12,37 +12,6 @@ import {
 import ApiHelper from "../../utils/api.helper";
 import { PublishModal } from "../Modal/PublishCropModal";
 
-const styles = StyleSheet.create({
-  item: {
-    //flex: '3',
-    width: "50%",
-    height: "auto",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "stretch",
-
-    paddingTop: "5%",
-    paddingLeft: "2%",
-    paddingRight: "2%"
-    //borderColor: '#0477BF',
-
-    //backgroundColor:'#0477BF',
-  },
-  card: {
-    elevation: 1
-  },
-  view: {
-    paddingHorizontal: 12
-  },
-  textHeader: {
-    paddingTop: 20,
-    fontSize: 22,
-    color: "#000",
-    fontWeight: "300",
-    textAlign: "center"
-  }
-});
-
 export default class Catalog extends Component {
   _handleLoadMore = () => {};
 
@@ -98,7 +67,7 @@ export default class Catalog extends Component {
       );
     } else {
     return (
-      <View style={styles.view}>
+      <View style={styles.container}> 
         <PublishModal
           modalVisible={this.state.showModal}
           close={() => {
@@ -110,7 +79,7 @@ export default class Catalog extends Component {
           numColumns={2}
           contentContainerStyle={{ paddingBottom: "4%" }}
           data={this.state.list}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <View key={item.id} style={styles.item}>
               <Card
                 style={styles.card}
@@ -118,7 +87,7 @@ export default class Catalog extends Component {
                   this.triggerModal(item), item.hindi_name, item.image
                 )}
               >
-                <Card.Cover source={{ uri: item.image }} />
+                <Card.Cover source={{ uri: item.image }}/>
                 <Card.Title
                   title={item.hindi_name}
                   subtitle={item.english_name}
@@ -134,3 +103,29 @@ export default class Catalog extends Component {
     }
   }
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    padding: 4
+  },
+  item: {
+    width: "50%",
+    height: "auto",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "stretch",
+  },
+  card: {
+    elevation: 1,
+    margin: 4,
+    padding: 4
+  },
+  textHeader: {
+    paddingTop: 20,
+    fontSize: 22,
+    color: "#000",
+    fontWeight: "300",
+    textAlign: "center"
+  }
+});
