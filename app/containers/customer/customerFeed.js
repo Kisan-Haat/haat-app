@@ -81,7 +81,7 @@ export default class Feeds extends Component {
                     subtitle={item.products.englishName}
                     right={props => (
                       <Text style={{ marginRight: 25 }}>
-                        {item.products.price}₹ per {item.products.units}
+                         ₹{item.products.price} / {item.products.units}
                       </Text>
                     )}
                   />
@@ -166,10 +166,12 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   Title: {
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: '500'
   },
   subTitle: {
-    fontSize: 14
+    fontSize: 14,
+    fontWeight: 'normal'
   },
   textHeader: {
     paddingTop: 20,
