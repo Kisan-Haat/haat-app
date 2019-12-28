@@ -14,7 +14,6 @@ import {
   Chip,
   TextInput
 } from 'react-native-paper';
-const units = ["kg", "mg", "liter", "ml", "gram", "unit"];
 
 export const PublishModal = props => {
   const NH_data = () => {
@@ -31,40 +30,9 @@ export const PublishModal = props => {
   submit = () => {
     let originalPoster = {
       hindiName: this.state.hindiName,
-
     }
-
   }
 
-  const styles = StyleSheet.create({
-    container: {
-
-    },
-    ActionBar: {
-      //flex: 3,
-      elevation: 4,
-      marginLeft: 10
-    },
-    icon: {
-      fontSize: 100,
-      width: 50,
-      height: 60,
-      alignContent: "stretch",
-
-      left: 5
-    },
-    TextInput: {
-      marginLeft: 16,
-      marginRight: 16,
-      height: 56
-    },
-    Text: {
-      marginLeft: 32
-    },
-    chip:{
-      marginRight:5,
-    }
-  });
   return (
       <Modal
         animationType="slide"
@@ -76,7 +44,6 @@ export const PublishModal = props => {
         <SafeAreaView>
         <Appbar>
           <Appbar.Action
-            style={(marginLeft = 0)}
             icon="close"
             style={styles.icon}
             onPress={props.close}
@@ -142,3 +109,28 @@ export const PublishModal = props => {
       </Modal>
   );
 };
+
+const styles = StyleSheet.create({
+  ActionBar: {
+    //flex: 3,
+    elevation: 4,
+    marginLeft: 10
+  },
+  icon: {
+    width: 50,
+    height: 60,
+    alignContent: "stretch",
+    left: 5
+  },
+  TextInput: {
+    marginLeft: 16,
+    marginRight: 16,
+    height: 56
+  },
+  Text: {
+    marginLeft: 32
+  },
+  chip:{
+    marginRight:5,
+  }
+});
