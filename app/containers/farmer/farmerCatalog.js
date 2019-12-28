@@ -77,7 +77,6 @@ export default class Catalog extends Component {
         />
         <FlatList
           numColumns={2}
-          contentContainerStyle={{ paddingBottom: "4%" }}
           data={this.state.list}
           renderItem={({ item }) => (
             <View key={item.id} style={styles.item}>
@@ -87,7 +86,7 @@ export default class Catalog extends Component {
                   this.triggerModal(item), item.hindi_name, item.image
                 )}
               >
-                <Card.Cover source={{ uri: item.image }}/>
+                <Card.Cover source={{ uri: item.image }} style={{ height: 168}}/>
                 <Card.Title
                   title={item.hindi_name}
                   subtitle={item.english_name}
@@ -107,7 +106,7 @@ export default class Catalog extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    padding: 4
+    padding: 8
   },
   item: {
     width: "50%",
@@ -119,7 +118,8 @@ const styles = StyleSheet.create({
   card: {
     elevation: 1,
     margin: 4,
-    padding: 4
+    width: 168,
+    height: 244
   },
   textHeader: {
     paddingTop: 20,
