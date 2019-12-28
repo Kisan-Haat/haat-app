@@ -54,65 +54,46 @@ export const PublishModal = props => {
             title ="Publish"
           />
         </Appbar>
-
-        <View>
-          <Image
-            source={{ uri: props.currentItem.image }}
-            style={{ width: 414, height: 192, resizeMode: "cover" }}
-          />
-
-          {NH_data()}
-          <Title style={{ fontSize: 14, marginLeft: 16 }}>
-            {props.currentItem.english_name}
-          </Title>
-        </View>
-        <View>
-          <TextInput
-            style={styles.TextInput}
-            label="Inventory"
-            onChangeText={text => this.setState({ text })}
-            keyboardType={'numeric'}
-          />
-          <Text style={styles.Text}>Enter how much stock you have</Text>
-          <View
-            style={{
-              marginLeft: 16,
-              marginRight: 16,
-              paddingTop: 22,
-              paddingBottom: 49,
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <ScrollView horizontal={true} >
-              
-            <Chip onPress={() => console.log("Pressed")}>kg</Chip>
-            <Chip onPress={() => console.log("Pressed")}>mg</Chip>
-            <Chip onPress={() => console.log("Pressed")}>liters</Chip>
-            <Chip onPress={() => console.log("Pressed")}>ml</Chip>
-            <Chip onPress={() => console.log("Pressed")}>gram</Chip>
-            <Chip onPress={() => console.log("Pressed")}>unit</Chip>
-            
-            </ScrollView>
-          </View>
-          <TextInput
-            style={styles.TextInput}
-            label="Rate per unit"
-            onChangeText={text => this.setState({ text })}
-            keyboardType={'numeric'}
-          />
-          <Text style={styles.Text}>
-            Enter the price the customer will pay per unit
-          </Text>
-        </View>
+          <View style={styles.container}>
+              <Image
+                source={{ uri: props.currentItem.image }}
+                style={{  height: 192, resizeMode: "cover" }}
+              />
+              {NH_data()}
+              <Title style={{ fontSize: 14, marginLeft: 16 }}>
+                {props.currentItem.english_name}
+              </Title>
+              <View style={{marginBottom: 16}}>
+                <TextInput
+                  style={styles.TextInput}
+                  label="Inventory"
+                  onChangeText={text => this.setState({ text })}
+                  keyboardType={'numeric'}
+                />
+                <Text>Enter how much stock you have</Text>
+              </View>
+              <View style={{marginBottom: 16}}>
+                <TextInput
+                  style={styles.TextInput}
+                  label="Rate per unit"
+                  onChangeText={text => this.setState({ text })}
+                  keyboardType={'numeric'}
+                />
+                <Text >
+                  Enter the price the customer will pay per unit
+                </Text>
+              </View>
+            </View>
         </SafeAreaView>
       </Modal>
   );
 };
 
 const styles = StyleSheet.create({
+  container:{
+    padding: 8,
+  },
   ActionBar: {
-    //flex: 3,
     elevation: 4,
     marginLeft: 10
   },
@@ -123,14 +104,6 @@ const styles = StyleSheet.create({
     left: 5
   },
   TextInput: {
-    marginLeft: 16,
-    marginRight: 16,
-    height: 56
-  },
-  Text: {
-    marginLeft: 32
-  },
-  chip:{
-    marginRight:5,
+    height: 56,
   }
 });
