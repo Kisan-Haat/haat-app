@@ -122,7 +122,7 @@ export default class Feeds extends Component {
                     </Text>
                   </Card.Actions>
                   <Card.Content>
-                    <Text style={styles.subtext}>{item.products.units}</Text>
+                    <Text style={styles.subtext}>Ordering in {item.products.units}</Text>
                   </Card.Content>
                   <Card.Actions>
                     <Button
@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
     margin: 8
   },
   card: {
-    padding: 8,
     elevation: 8,
     backgroundColor: "#FAFAFA"
   },
