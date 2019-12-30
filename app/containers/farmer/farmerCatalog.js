@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, ListView, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import {
-  Button,
   Card,
-  BottomNavigation,
-  Title,
-  Paragraph,
   ActivityIndicator,
-  Modal
 } from "react-native-paper";
 import ApiHelper from "../../utils/api.helper";
 import { PublishModal } from "../Modal/PublishCropModal";
@@ -117,7 +112,7 @@ const styles = StyleSheet.create({
   },
   card: {
     elevation: 1,
-    margin: 4,
+    margin: 8,
     width: 168,
     height: 244
   },

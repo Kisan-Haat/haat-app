@@ -49,9 +49,10 @@ export const PublishModal = props => {
             onPress={props.close}
           />
           <Title>List Product</Title>
-          <Appbar.Content
-            titleStyle={{ textAlign: "right", color: "#FFF", fontSize: 14}}
-            title ="Publish"
+          <Appbar.Action
+            title ="publish"
+            style={styles.icon}
+            onPress={props.close}
           />
         </Appbar>
           <View style={styles.container}>
